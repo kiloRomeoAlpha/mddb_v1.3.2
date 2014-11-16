@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module convert.converters</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#336666">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="convert.html"><font color="#ffffff">convert</font></a>.converters</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/mddb/convert/converters.py">/srv/cyberska/kenneth/sw/mddb/convert/converters.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;DQS&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mddb.converters.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2012-06<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cos"><strong>cos</strong></a>(...)</dt><dd><tt><a href="#-cos">cos</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;cosine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-decimalize"><strong>decimalize</strong></a>(deltaString)</dt><dd><tt>Convert&nbsp;the&nbsp;passed&nbsp;string&nbsp;value&nbsp;in&nbsp;[+-]deg.min.sec&nbsp;format<br>
+to&nbsp;decimal&nbsp;degrees.<br>
+&nbsp;<br>
+eg.,<br>
+&gt;&gt;&gt;&nbsp;<a href="#-decimalize">decimalize</a>('+0.1.1.0')<br>
+0.0002777777777777778<br>
+&gt;&gt;&gt;&nbsp;<a href="#-decimalize">decimalize</a>('-0.0.1.0')<br>
+-0.0002777777777777778<br>
+&nbsp;<br>
+parameters:&nbsp;&nbsp;&lt;string&gt;&nbsp;&nbsp;increment&nbsp;string<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;,&nbsp;&nbsp;float&nbsp;value&nbsp;of&nbsp;the&nbsp;measure,&nbsp;decimal&nbsp;degrees.</tt></dd></dl>
+ <dl><dt><a name="-fitsify"><strong>fitsify</strong></a>(coord, i, projection<font color="#909090">=None</font>)</dt><dd><tt>Convert&nbsp;a&nbsp;CASA&nbsp;Image&nbsp;header&nbsp;coordinate&nbsp;type/name&nbsp;into&nbsp;FITS&nbsp;<br>
+compliant&nbsp;keyword-value&nbsp;pairs.&nbsp;A&nbsp;non-direction&nbsp;CASA&nbsp;coordinate<br>
+returns&nbsp;a&nbsp;2-tuple,&nbsp;a&nbsp;CASA&nbsp;direction&nbsp;coordinate,&nbsp;a&nbsp;4-tuple.<br>
+The&nbsp;passed&nbsp;index&nbsp;i&nbsp;will&nbsp;determine&nbsp;a&nbsp;CTYPE[i]&nbsp;value&nbsp;for&nbsp;returned<br>
+keywords.<br>
+&nbsp;<br>
+eg.,<br>
+&gt;&gt;&gt;&nbsp;coord1&nbsp;=&nbsp;'COORDINATE0-TYPE_NAME:Frequency'<br>
+&gt;&gt;&gt;&nbsp;coord2&nbsp;=&nbsp;'COORDINATE2-TYPE_NAME:Declination&nbsp;&amp;&nbsp;Right&nbsp;Ascension'<br>
+&gt;&gt;&gt;&nbsp;proj&nbsp;&nbsp;&nbsp;=&nbsp;'SIN'<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt;fitsifyCoord(coord1,&nbsp;1)<br>
+('CTYPE1',&nbsp;'FREQ')<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt;fitsifyCoord(coord2,&nbsp;2&nbsp;,proj)<br>
+('CTYPE3','DEC--SIN','CTYPE4','RA---SIN')<br>
+&nbsp;<br>
+An&nbsp;unrecognized&nbsp;coordinate&nbsp;will&nbsp;raise&nbsp;a&nbsp;TypeError:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;coord1&nbsp;=&nbsp;"KAAAAAHN!"<br>
+&gt;&gt;&gt;&nbsp;<a href="#-fitsify">fitsify</a>(coord1,1)<br>
+Traceback&nbsp;(most&nbsp;recent&nbsp;call&nbsp;last):<br>
+&nbsp;&nbsp;File&nbsp;"&lt;stdin&gt;",&nbsp;line&nbsp;1,&nbsp;in&nbsp;&lt;module&gt;<br>
+&nbsp;&nbsp;File&nbsp;"converters.py",&nbsp;line&nbsp;208,&nbsp;in&nbsp;fitsify<br>
+&nbsp;<br>
+TypeError:&nbsp;Cannot&nbsp;interpret&nbsp;coordinate,&nbsp;KAAAAAAHN!<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;int&gt;,&nbsp;&lt;string&gt;&nbsp;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tuple&gt;,&nbsp;&nbsp;n-tuple&nbsp;of&nbsp;strings.</tt></dd></dl>
+ <dl><dt><a name="-formatRA"><strong>formatRA</strong></a>(raval)</dt><dd><tt>Reformat&nbsp;a&nbsp;passed&nbsp;RA&nbsp;value&nbsp;of&nbsp;HH:MM:SS.sss&nbsp;into&nbsp;[d]dd.mm.ss.sss<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;of&nbsp;the&nbsp;form&nbsp;'HH:MM:SS.sss'<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;,&nbsp;of&nbsp;the&nbsp;form&nbsp;'[d]dd.mm.ss.sss'</tt></dd></dl>
+ <dl><dt><a name="-getValTuple"><strong>getValTuple</strong></a>(line)</dt></dl>
+ <dl><dt><a name="-llh"><strong>llh</strong></a>(lines)</dt><dd><tt>Function&nbsp;receives&nbsp;a&nbsp;list&nbsp;of&nbsp;CASA&nbsp;Image&nbsp;header&nbsp;lines&nbsp;and&nbsp;calculates<br>
+the&nbsp;transformation&nbsp;of&nbsp;telescope&nbsp;position&nbsp;coordinates&nbsp;of&nbsp;lat,lon,&nbsp;height<br>
+into&nbsp;the&nbsp;ITRF&nbsp;X,Y,Z&nbsp;parameters.<br>
+&nbsp;<br>
+paramaters:&nbsp;&lt;list&gt;,&nbsp;&nbsp;list&nbsp;of&nbsp;image&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tuple&gt;,&nbsp;3-tuple&nbsp;of&nbsp;floats</tt></dd></dl>
+ <dl><dt><a name="-llh2XYZ"><strong>llh2XYZ</strong></a>(lat, lon, h)</dt><dd><tt>Converts&nbsp;a&nbsp;geodetic&nbsp;latitude,&nbsp;longitude&nbsp;and&nbsp;height&nbsp;into&nbsp;a&nbsp;<br>
+ITRF&nbsp;geocentric&nbsp;X,Y,Z&nbsp;tuple&nbsp;(m),&nbsp;the&nbsp;standard&nbsp;measure&nbsp;for&nbsp;keyword<br>
+values,<br>
+&nbsp;<br>
+OBSGEO-X<br>
+OBSGEO-Y<br>
+OBSGEO-Z<br>
+&nbsp;<br>
+Currently,&nbsp;the&nbsp;WGS84&nbsp;geodetic&nbsp;model&nbsp;is&nbsp;the&nbsp;basis&nbsp;for&nbsp;this<br>
+conversion&nbsp;where,<br>
+&nbsp;<br>
+A&nbsp;&nbsp;is&nbsp;the&nbsp;semi-major&nbsp;axis&nbsp;of&nbsp;the&nbsp;model&nbsp;ellipse<br>
+FL&nbsp;is&nbsp;the&nbsp;"flattening"&nbsp;parameter<br>
+&nbsp;<br>
+A&nbsp;&nbsp;&nbsp;=&nbsp;6378137.0&nbsp;(m)<br>
+FL&nbsp;&nbsp;=&nbsp;0.00335281066475&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;1/298.257223563<br>
+&nbsp;<br>
+latitude,&nbsp;longitude&nbsp;are&nbsp;radians,&nbsp;h&nbsp;in&nbsp;metres&nbsp;(m).<br>
+latitude,&nbsp;radians&nbsp;east&nbsp;of&nbsp;Greenwich.<br>
+&nbsp;<br>
+Equations&nbsp;implemented&nbsp;here&nbsp;are&nbsp;adapted&nbsp;from&nbsp;the&nbsp;National&nbsp;<br>
+Geodetic&nbsp;Survey&nbsp;(NGS)&nbsp;package&nbsp;XYZWIN&nbsp;-&nbsp;Version&nbsp;2.0,&nbsp;the&nbsp;source&nbsp;for&nbsp;<br>
+which&nbsp;can&nbsp;found&nbsp;at&nbsp;<a href="http://www.ngs.noaa.gov/PC_PROD/XYZWIN/">http://www.ngs.noaa.gov/PC_PROD/XYZWIN/</a><br>
+&nbsp;<br>
+parameters:&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;lat&nbsp;(rad),&nbsp;lon(rad),&nbsp;height(m)<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;X,&nbsp;Y,&nbsp;Z&nbsp;(m)</tt></dd></dl>
+ <dl><dt><a name="-referencePixels"><strong>referencePixels</strong></a>(refPixLine)</dt><dd><tt>Function&nbsp;recieves&nbsp;a&nbsp;line&nbsp;containing&nbsp;the&nbsp;reference&nbsp;pixel&nbsp;list&nbsp;(or&nbsp;array)<br>
+for&nbsp;a&nbsp;CASA&nbsp;Image&nbsp;direction&nbsp;coordinate,&nbsp;and&nbsp;returns&nbsp;a&nbsp;2-tuple&nbsp;of&nbsp;reference&nbsp;pixel<br>
+values.&nbsp;These&nbsp;are&nbsp;left&nbsp;as&nbsp;strings&nbsp;for&nbsp;the&nbsp;convenience&nbsp;of&nbsp;file&nbsp;writing.<br>
+&nbsp;<br>
+Eg.,&nbsp;a&nbsp;typical&nbsp;reference&nbsp;pixel&nbsp;header&nbsp;line&nbsp;is&nbsp;passed:<br>
+&gt;&gt;&gt;&nbsp;line&nbsp;=&nbsp;'REFERENCE2-PIXEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32.0,&nbsp;32.0'<br>
+&gt;&gt;&gt;&nbsp;convertRefPix(line)<br>
+('32.0',&nbsp;'32.0')<br>
+&nbsp;<br>
+parameters:&nbsp;&nbsp;&nbsp;&lt;string&gt;,&nbsp;a&nbsp;'REFERENCE[i]-PIXEL'&nbsp;header&nbsp;line<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tuple&gt;,&nbsp;&nbsp;pixel1,&nbsp;pixel2</tt></dd></dl>
+ <dl><dt><a name="-revertFrequency"><strong>revertFrequency</strong></a>(fval, unit)</dt><dd><tt>Revert&nbsp;a&nbsp;frequency&nbsp;value&nbsp;in&nbsp;'unit'&nbsp;measure&nbsp;to&nbsp;pure<br>
+Hz&nbsp;value,&nbsp;where&nbsp;'unit'&nbsp;may&nbsp;be&nbsp;one&nbsp;of<br>
+&nbsp;<br>
+Hz,&nbsp;KHz,&nbsp;MHz,&nbsp;GHz<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;float&gt;,&nbsp;&lt;string&gt;,&nbsp;a&nbsp;freq&nbsp;value,&nbsp;unit<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;,&nbsp;reverted&nbsp;freq&nbsp;value&nbsp;in&nbsp;Hz.</tt></dd></dl>
+ <dl><dt><a name="-sin"><strong>sin</strong></a>(...)</dt><dd><tt><a href="#-sin">sin</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;sine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-sqrt"><strong>sqrt</strong></a>(...)</dt><dd><tt><a href="#-sqrt">sqrt</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;x.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''<br>
+<strong>ctypeMap</strong> = {'Declination': 'DEC-', 'Frequency': 'FREQ', 'Latitude': 'GLAT', 'Longitude': 'GLON', 'Right Ascension': 'RA--', 'Stokes': 'STOKES', 'VELOCITY': 'VELO'}<br>
+<strong>projectionMap</strong> = {'CAR': '-CAR', 'SIN': '-SIN', 'TAN': '-TAN'}</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#00477d">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#00477d"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

@@ -1,0 +1,592 @@
+
+                                                             mddb, Version 1.3.2
+	           	                                 -----------------------
+		                                            The CyberSKA Project
+		                                                   K.R. Anderson
+		                                                      2012-12-12
+
+
+Introduction
+------------
+
+The mddb (metadata database) package is designed to receive, analyze,
+validate, and to the extant practicable, remediate metadata as presented in a
+FITs-like header file, usually one that would be produced by the CyberSKA metaData
+package. This effort is undertaken in order to then present the remediated
+metadata to CADC's fits2caom package, which receives these data and inserts
+them into the CADC CAOM database (Common Astronomical Observation Model). The
+mddb package can handle and process two (2) of the four (4) dataset formats
+that are accomodated by the CyberSKA portal and the metaData package: FITS
+images and CASA Images. This is due to the fact that the data model described
+by CAOM v1.0 accomodates imaging data, and is not capable of modelling radio
+visibility. CAOM v2.0 is expected to be able to accomodate Visibility data in
+a future release. The CAOM database at CADC then provides exposure to VO
+services, and CyberSKA data become available through the VAO.
+
+mddb provides a library of classes, one each for each kind of dataset
+format/type as described by the metaData package, a library of utility
+functions and a command line interface for easy execution on a particular dataset.
+
+Classes
+-------
+The main classes (in "mddb.mains") are presented below, and named in an
+obvious way.  Each class is presented, java-like, in its own similarly named module:
+
+	BaseDbInsert
+	DbCImageInsert
+	DbFitsInsert
+	DbMSInsert
+	DbUVFitsInsert
+
+Implementation is done in the subclasses, which inherit all public methods from the
+BaseDbInsert class. One public method, configureOverride(), is abstract and
+*must* be implemented in any subclasses. The configureOverride() method then
+calls the implemented data engineering, and nominally performed by private
+methods implemented in the subclass.
+
+				      BaseDbInsert
+				            |
+	      ----------------------------------------------------------
+              |                  |                  |                  |
+	DbCImageInsert	   DbFitsInsert		DbMSInsert	DbUVFitsInsert
+
+Environment
+-----------
+The mddb package requires, and is dependent upon, the directory structure
+known as "DQS".  This directory has the following base structure,
+
+      $DQS/:
+      ---
+       CONFIG/
+       DATASETS/
+       fits2caom/
+       HEADERS/
+       logs/
+       mddb.cfg
+       OVERRIDE/
+       VALIDATE/
+
+Users should acquire this directory as a tar archive and deposit it on their
+system.  Once in place, an environment variable, $DQS, should be defined to
+indicate this location. Users will then need to edit the provided mddb.cfg
+file and set the internal 'dqs' DEFAULT variable to reflect their $DQS env var.
+(configs do not interpolate shell variables). Most directories will be empty
+at first, though CONFIG/ and fits2caom/ must provide the expected contents.
+Furthermore, a 'mddb.cfg' file is also provided in the mddb package and can be
+found in mddb/config/ .
+
+Basic operations
+----------------
+mddb first recieves a header file, which may be located in $DQS/HEADERS, in
+which case, no path need be prepended to the filename. If in another location,
+the header file first will be copied to $DQS/HEADERS to retain a copy. The
+configuration process will then commence and produce a .override file, placed
+in $DQS/OVERRIDE/, and named as the file name head + 'override'. This is the
+set of metadata that is actually presented to the CAOM database. A validation
+process then confirms the override file and whether it is suitable for
+database insertion. A user may see one of two kinds of files written at this
+stage:
+
+	fileheader.nogo      or
+	fileheader.valid
+
+The validation process will write such files to the $DQS/VALIDATE directory.
+A .nogo file indicates that an unsupported MIME-type was passed, which in the
+case of this current version of mddb, would be either 'image/ms-uvw' or
+'image/fits-uvw.' If the header file produces a .valid file, this file may 
+contain up to three (3) levels of messaging:
+
+	INFO
+	WARN
+	ERROR
+
+The presence of any one 'ERROR' message will prevent the fits2caom database
+insertion. These .valid files should be used as feedback to the data provider
+as to what exactly is wrong with the metadata that prevents CAOM database
+insertion.
+
+An example .valid file showing the three (3) levels of messages
+
+   27200.valid:
+   ------------
+   # MDDB Validation report for /srv/cyberska/DQS/OVERRIDE/27200.override
+   # Written 2012-12-11
+   # Package Name: mddb
+   # Package Version: 1.3.2
+
+   ERROR: [N]EXTEND keyword(s) detected. Cannot insert MEF files
+   INFO:  Metadata release date set: 2099-01-01
+   ERROR: Unrecognized FITS projection code:: NCP
+   ERROR: Unrecognized FITS projection code:: NCP
+   WARN:  INSTRUME set to ATCA
+   INFO:  Wrote EQUINOX: 2000.0
+   INFO:  Wrote RADESYS: FK5
+   INFO:  WCS Rotation angle: 0.0
+   INFO:  Wrote CD Matrix
+   INFO:  Data URI http://dms.cyberska.org:8080/dlmanager/getfile?fileid=24724
+
+Even though a single ERROR message will prevent database insertion, the
+configuration and confirmation processes are run in their entirety in order to
+provide as complete a summary of metadata issues as possible. It is imagined
+that this .valid file may be sent to the data provider to help correct a
+dataset's metadata.
+
+Provided that no ERROR level messages appear in the file header's .valid file,
+the fits2caom process is then executed.  This still may fail for various
+reasons. For example, an unrecognized coordinate CTYPE such as 'RM', which
+cannot be accomodated by the CAOM data model. However, the mddb package has
+exercised a great deal of effort to this point in order to minimize the likelihood
+of fits2caom failure. Incorrect or unaccommodated WCS metadata will
+be the mostly likely source of failure, both at the .valid file level and in
+fits2caom execution.
+
+Interfaces
+----------
+1) Command line interface
+mddb provides a command line interface, dbinsert, which will nominally accept
+three (3) arguments, one of which will be the filename of the metadata header
+file for the dataset to be inserted into the CAOM database.
+
+  Usage:
+
+  $ mddb/dbinsert
+
+    dbinsert running mddb v1.3.2
+
+    Usage: dbinsert [--help] [--public]
+    [--verbose][--nodb][--config=<DQS-config-file>] \
+    --mtype=<mime-type> --hdr=<hdrfile> --uri=<uri> 
+
+    Three (3) keyword arguments are required. 
+
+    --mtype= 	<mime-type> of dataset to be inserted
+		One (1) of CyberSKA metadata mime-types:
+
+			image/fits-image, 
+			image/ms-image, 
+			image/fits-uvw,
+			image/ms-uvw
+
+    --hdr=   	<header file for the dataset>
+    --uri=   	<URI to CyberSKA platform page, or download link>,
+		which should look like,
+
+		http://www.cyberska.org/pg/file/read/<nnnnn>, or
+		http://dms.cyberska.org:8080/dlmanager/getfile?fileid=<nnnnnn>
+
+    --public	The dataset metadata are publicly available.
+    --verbose	Turn on stdout messages.
+    --nodb	No DB insert. executeInsert() is not called.
+
+    A user may pass a DQS configuration file, i.e., an mddb.cfg:
+
+    --config= 	<config-file> path to a DQS config file.
+
+		If "--config" is not provided at the command line, a search 
+		for "mddb.cfg" will occur on ~ and $DQS.  An Exception is
+		raised if an mddb.cfg file cannot be found.
+
+    --help 	This message.
+
+
+2) API
+Programmatically, header metadata validation and database insertion can be
+performed by instatiating objects from the classes appropriate to the dataset
+in question and then calling the available public methods.
+
+Eg.,
+
+  The rUtils.run() function provide typical usage of these classes and method
+  calls (variables passed as arguments are named to manifest meaning).
+
+  'image/fits-image':
+
+	dbtask  = dbFitsInsert.DbFitsInsert(configFile, verbose)
+        override= dbtask.buildOverride(hdrFile, uri, public)
+        msgTypes= dbtask.confirmOverride(override, fileType)
+	dbtask.executeInsert(collid, override, uri)
+
+
+  'image/ms-image': 
+
+  	dbtask  = dbCImageInsert.DbCImageInsert(configFile, verbose)
+        override= dbtask.buildOverride(hdrFile, uri, public)
+        msgTypes= dbtask.confirmOverride(override, fileType)
+        dbtask.executeInsert(collid, override, uri)
+
+  (The following are here for example purposes, but readers now understand
+   that these types will cause NotImplementedError exceptions to be raised.)
+
+  'image/fits-uvw':
+
+  	dbtask  = dbUVFitsInsert.DbUVFitsInsert(configFile, verbose)
+        override= dbtask.buildOverride(hdrFile,uri,public)   -- NotImplementedError!
+        msgTypes= dbtask.confirmOverride(override,fileType)
+        dbtask.executeInsert(collid,override,uri)
+
+  'image/ms-uvw': 
+
+        dbtask  = dbMSInsert.DbMSInsert(configFile, verbose)
+        override= dbtask.buildOverride(hdrFile,uri,public)  -- NotImplementedError!
+        msgTypes= dbtask.confirmOverride(override,fileType)
+        dbtask.executeInsert(collid,override,uri)
+
+
+
+-----------------
+
+
+
+A:: The mddb package
+
+There are two components to the mddb package. mddb python package itself,
+and the DQS (Data Query Service) directory structure.
+
+1) mddb is a pure python package. It has no dependencies on third party packages.
+The contents will appear in this form:
+
+mddb/
+  ChangeLog
+  README (This file)
+  __init__.py
+  config/
+  convert/
+  db/
+  dbinsert --> dbinsert.py
+  dbinsert.py
+  docs/
+  mains/
+  mddbVersion.py
+  scripts/
+  utils/
+
+
+subdirectories, also importable packages:
+
+config/
+  __init__.py
+  mddb.cfg
+  mddbEnv.py
+
+convert/
+  converters.py
+  __init__.py
+  converters.py
+  keymaps.py
+  mjdConversions.py
+
+docs/
+  baseDbInsert.html
+  config.html
+  config.mddbEnv.html
+  convert.converters.html
+  convert.html
+  convert.keymaps.html
+  convert.mjdConversions.html
+  dbCImageInsert.html
+  db.confirmKeys.html
+  dbFitsInsert.html
+  db.html
+  dbinsert.html
+  dbMSInsert.html
+  dbUVFitsInsert.html
+  db.xDBKeys.html
+  mddbVersion.html
+  utils.f2cArgs.html
+  utils.html
+  utils.rUtils.html
+
+db/
+ confirmKeys.py
+ __init__.py
+ checkSetKeys.py
+ confirmKeys.py
+ xDBKeys.py
+
+mains/
+  __init__.py
+  baseDbInsert.py
+  dbCImageInsert.py
+  dbFitsInsert.py
+  dbMSInsert.py
+  dbUVFitsInsert.py
+
+scripts/
+ checkSetKeys.py
+ keyAssertions.py
+ public_uris.py
+ public_uris_fullset.py
+ testrun.py
+
+utils/
+ __init__.py
+ f2cArgs.py
+ keyAssertions.py
+ rUtils.py
+
+2) The DQS directory structure, which mddb uses for various input and output files.
+It will arrive as a tarball and ravel into this form
+
+ /srv/cyberska/DQS:
+   CONFIG/
+   DATASETS/
+   fits2caom/
+   HEADERS/
+   logs/
+   mddb.cfg
+   OVERRIDE/
+   runf2c.sh
+   scripts/
+   uris/
+   VALIDATE/
+
+Users will generally not need to consult or interact with the DQS directory at all.
+The mddb package will be the primary mangler of the DQS directory.
+
+
+B:: Installation
+_________
+
+1) Untar the mddb tarball and install the mddb package wherever you like.
+   This path must be added to the user's PYTHONPATH in order that imports are properly done.
+   The command line interface is provide through the executable module, dbinsert.py,
+   which is sym-linked by the straight-up dbinsert. Users should add the location of dbinsert
+   to their $PATH environment variable.
+
+2) Untar the DQS tarball in a preferred location.  Users must set an environment variable $DQS
+   to be this location. 
+
+eg.,
+
+   export DQS=/srv/cyberska/DQS
+
+or if you are silly enough to use csh
+
+     setenv DQS /srv/cyberska/DQS
+
+$DQS is critical to the operational environment of mddb and must be set.  Essentially, it is the
+     operational environment of mddb.
+
+
+
+C:: Getting things running.
+_________
+
+1) The .dbrc file.
+    Users must have a .dbrc file in their home directories.
+    This is the rc file that fits2caom uses to establish the database connection.
+    It will have the form
+
+    DEVSYBASE cyberska <username> <passwd> com.sybase.jdbc3.jdbc.SybDriver jdbc:sybase:Tds:cadcdb5.dao.nrc.ca:4200/cyberska
+
+    DEVSYBASE is the CADC test database.  This will have to be changed to the
+    production database when we have permission set up to to direct insertion
+    to that resource. Other fields may also change, such as the jdbc driver,
+    if production database is not SYBASE (which I do not believe it is).
+    For testing purposes, however, I think it is sufficient to use the DEVSYBASE
+    just to get Calgary set up and working.
+
+
+2) wcsLibJNI library Java interface for native datatypes.
+
+   Download opencadc if you do not have it.  Under opencadc/projects find the wcsLibJNI dir.
+   Run the make file, which should produce the share object lib,
+   libwcsLibJNI.so and write it to opencadc/projects/wcsLibJNI/lib/.
+   Once complete. go to the fits2caom directory in DQS/ and
+   edit the fits2caom shell script (i.e $DQS/fits2caom/fits2caom) to insert your path
+   to libwcsLibJNI.so . You will see my path in there, so comment that out or remove it.
+
+
+3) $DQS
+   Set up the $DQS environment variable.
+
+
+4) $PYTHONPATH
+   Add mddb to the $PYTHONPATH
+
+
+5) $PATH
+    Add dbinsert to $PATH
+
+6)mddb.cfg
+  The mddb package uses a configuration file called mddb.cfg to establish the
+  operational environment. This file is included under $DQS. Mostly this specifies
+  all the directories where files are found, read and written. The naming of the DQS
+  dirs should make it obvious what each is for.  Since configs cannot interpret shell
+  environment variables, the User MUST edit the first line of this file to indicate
+  the DQS directory.
+
+  Eg.,  The Signals Lab $DQS/mddb.cfg file has this at top
+
+  [DEFAULT]
+  # UBCO Signals Lab default DQS
+  dqs    = /srv/cyberska/DQS      <-- you change this
+
+  Simply edit this to indicate what DQS should be for your particular set up.
+  One other config field that you will want to change will be the 'test' switch,
+  which is under the 'switches' section.
+
+  [switches]
+  verbose = on
+  print   = on
+  debug   = on
+  simple  = on
+  no-retrieve = on
+  test = on          <-- wait until ready, then flip this to 'off'
+
+  test = on indicates that fits2caom will not execute a database insert, but
+  will perform all calculations prior to insertion. This is a good switch to leave
+  on until operations appear nominal. When ready for database insertion, simply set
+  test = off. Other switches should be left as is. verbose, for example, writes all
+  fits2caom gob to a log file, specified witihin the mddb package.
+
+  At this point, things should be ready to go.  mddb provides a test script that
+  should indicate nominal operation. Once you have everything configured, run the
+  testrun.py script. This is in the scripts/ directory. You can run it from inside
+  mddb or outside
+
+  eg.,
+
+  % scripts/testrun.py
+  or
+  % <path/to/mddb/>scripts/testrun.py
+
+  You should several output lines that looks like this:
+
+  /srv/cyberska/kenneth/sw/mddb> scripts/testrun.py
+  ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=31261', '--hdr=M100contimage.fits.hdr', '--public']
+  0x828801395ac068ea
+
+
+  ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=31246', '--hdr=Antennae_SouthCO2_1LineCleanimage.fits.hdr', '--public']
+  0x5fc901395ac071f0
+
+
+  ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=31231', '--hdr=Antennae_NorthCO2_1LineCleanimage.fits.hdr', '--public']
+  0x312701395ac07ac0
+
+
+  ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=26169', '--hdr=M33-at-160mm.fits.hdr', '--public']
+   1
+
+   ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=24724', '--hdr=atlascdfsfits.fits.hdr', '--public']
+   0x52a01395ac08bba
+
+
+   ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=17975', '--hdr=chan93_flux.fits.hdr', '--public']
+   0x55cc01395ac09469
+
+
+   ['./dbinsert', '--mtype=image/ms-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36219', '--hdr=cena.image.tar.hdr', '--public']
+   0x626301395ac09d31
+
+
+   ['./dbinsert', '--mtype=image/ms-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36223', '--hdr=IRAS16293.ms.tar.hdr', '--public']
+   0x540801395ac0a5fd
+
+
+   ['./dbinsert', '--mtype=image/ms-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36227', '--hdr=M100cont.ms.tar.hdr', '--public']
+   0xa25901395ac0aebd
+
+
+   ['./dbinsert', '--mtype=image/ms-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36273', '--hdr=Orion.methanol.ms.tar.hdr', '--public']
+   0x1b5401395ac0b774
+
+
+   ['./dbinsert', '--mtype=image/ms-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36406', '--hdr=cena_continuum.image.hdr', '--public']
+   0xde6601395ac0c044
+
+
+   ['./dbinsert', '--mtype=image/fits-image', '--uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36899', '--hdr=ALMA_SGR_A.fits.hdr', '--public']
+   0x43d401395ac0c90d
+
+NOTE: It is only the testrun.py script that is spitting out the command line arguments.
+This is not output of mddb package.
+
+The return codes are seen, either as the fits2caom hex value or 1, which indicates mddb
+failure, and no database insertion was attempted. You can view the validation message,
+which will appear under $DQS/VALIDATE as the file, M33-at-160mm.fits.valid, which is
+just the header file name with the .valid extension replacing .hdr.
+
+
+D:: Operations
+
+Once the testrun.py script is running and fits2caom is returning hex values
+(as opposed to blowing up), you should be good to go for nominal operations.
+Hopefully, our validation process will prevent fits2caom blowing up altogether.
+As you will see from the testrun.py script, the command line arguments are all
+keyword args.
+
+Typing dbinsert (or dbinsert.py) will deliver the Usage:
+
+mddb> dbinsert
+
+      Usage: dbinsert [--help] [--public] [--verbose][--config=<DQS-config-file>] --mtype=<mime-type> --hdr=<hdrfile> --uri=<uri> 
+
+      Three (3) keyword arguments are required. 
+
+      --mtype=		<mime-type> of dataset to be inserted
+      	         	One (1) of CyberSKA metadata mime-types:
+
+		     	image/fits-image,
+		     	image/ms-image,
+		     	image/fits-uvw,
+		     	image/ms-uvw
+
+       --hdr=     	<header file for the dataset>
+       --uri=     	<URI to CyberSKA platform page, or download link>,
+	          	which should look like,
+
+		  	http://www.cyberska.org/pg/file/read/<nnnnn>, or
+		  	http://dms.cyberska.org:8080/dlmanager/getfile?fileid=<nnnnnn>
+
+	[--public]  	The dataset metadata are publicly available.
+	[--verbose] 	Turn on stdout messages.
+
+	A user may pass a DQS configuration file, i.e., an mddb.cfg:
+
+	[--config=]  	<config-file> path to a DQS config file.
+	          	If "--config" is not provided at the command line, a search for "mddb.cfg" will occur on ~ and $DQS.
+		  	An Exception is raised if an mddb.cfg file cannot be found.
+
+	[--help]	This message.
+
+
+1) --config=  At this point, you can see that the command line actually allows you
+              to pass an alternative 'mddb.cfg' file, which maybe anywhere. However,
+	      I strongly discourage such behaviour. When --config is not specified,
+	      the mddb package defaults to looking in the user's home directory (~)
+	      and then $DQS, which is where I always leave it and let it run from there.
+	      In short, you should never have to pass a --config argument (even though you can).
+	      This is provided in the event of multiple DQS directories which may not be the
+	      same as specified in the current mddb.cfg file.
+
+2) --hdr=  This is the header file that will come out of the metaData package.
+   	   Pass the full path to the header file.  mddb will copy this file into the
+   	   $DQS/HEADERS directory.  Once a header file is in  $DQS/HEADERS, then you need only
+   	   specify the header filename itself, without prepending the path. With no path,
+	   mddb will automatically look in  $DQS/HEADERS for that header file.
+	   Alternatively, you can copy any header files you like into $DQS/HEADERS,
+   	   and then just use pathless filenames in the --hdr argument.
+
+3) --verbose  Will turn on a whole bunch of stuff spitting to stdout.  You may want to
+   	      use this for the first few times, just to see what it happening.
+   	      I have found it invaluable.
+
+4) --public  As already discussed, this will set the meta release date to be the current day.
+   	     Otherwise, the date is set to be 2099-01-01 for private data.
+
+  Example use:
+
+  mddb> dbinsert --hdr=test_casa.hdr --uri=http://dms.cyberska.org:8080/dlmanager/getfile?fileid=36219 --mtype=image/ms-image
+  0x626301395ac09d31
+
+  Here you see the command line call, test_casa.hdr is in the $DQS/HEADERS directory already,
+  so it needs no path prepend. No --public switch, so this is private, and no --verbose,
+  so it is quiet.  The only thing returned is the fits2caom return value, which indicates success.
+  I'm not sure if this will cause Arne some trouble, but I can perhaps fiddle around with
+  that if needed. Right now, however, getting things set up and configured is the first threshold.
+_____________________________________________
+
+kra
+12-12-12

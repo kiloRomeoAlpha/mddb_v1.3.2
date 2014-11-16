@@ -1,0 +1,124 @@
+2012-12-10  Ken Anderson  <kenwood@>
+	* mddb v1.3.2 introduces the small updates to modules imports
+
+	* import of mddb packages preprends 'mddb' or 'from mddb'
+
+	* FitsDbInsert.__setSpectralCoord now checks and remediates
+	spectral coordinate values of 'FREQUENC" to 'FREQ'
+
+	* README
+
+2012-12-03  Ken Anderson  <kenwood@>
+
+	* v1.3.1 introduces fixes for TELSCOPE and INSTRUME
+	keywords, Direction Coordinate checking.
+
+	* DbFitsInsert.__checkSetKeys() method implemented to insert
+	'Unknown' for various informational, though db critical, keywords.
+	See mddb.db.checkSetKeys for details. In mddb v!3., these
+	keys are 'OBJECT', 'INSTRUME', 'TELESCOP', 'OBSERVER'. Default
+	values for these keys are provided by checkSetKeys.setFitsKeys.
+
+	* DbFitsInsert.__assertKey() added in support of __checkSetKeys().
+
+	* DbFitsInsert.__setInstrumentLineBasedOnTelescopeValue() added
+	in support of DbFitsInsert.__checkSetKeys().
+
+	* db.checkSetKeys provides a database of keyword checks and
+	default insertion values.
+
+	* DbFitsInsert.__assertDirectionCoord() looks for a valid direction
+	coordinate. Writes ERRORs to validation msg.
+
+	* DbFitsInsert.__affirmDirection() check direction and projection
+	codes. Write ERRORs to validation msg.
+
+	* db.checkSetKeys includes direction and projection codes for coordianate
+	assertions.
+
+	* DbFitsInsert.__setSpectralCoord() fixes the spectral
+	coordinate when the value is incorrectly written as
+	'Frequency'. Such a spectral coordinate must be equal to 'FREQ',
+	and is so set. A "WARN" entry is logged to the dataset's .valid file.
+
+
+2012-10-29  Ken Anderson  <kenwood@>
+
+	* ChangeLog: v1.3 introduces a renamed ChangeLog
+	(was Changelog)
+
+	* mains package now holds the main class modules:
+	baseDbInsert
+	dbFitsInsert
+	dbCImageInsert
+	dbUVFitsInsert
+	dbMSInsert
+
+	* dbinsert cli pared.
+
+	* dbinsert now handles NotImplementedError.
+	Writes .nogo file to $DQS/VALIDATE.
+	Currently, this exception is raised on Mime-types,
+	image/fits-uvw, image/ms-uvw
+
+	* dbinsert.run() function refactored to utils.rUtils,
+	i.e. utils.rUtils.run()
+
+	* DbFitsInsert.configureOverride() method now traps/reports
+	FitsHeaderError exceptions in .valid files as an ERROR.
+
+	* DBFitsInsert implements new method, __assertSimple(),
+	testing for MEF files. MEF files are not handled.
+	ERROR is written to validationMsg. ERROR prevents
+	attempt at executeInsert() call.
+
+	* confirmKeys.requireFitsKeys map updated and expanded; now
+	includes WCS keywords.
+
+	* DbUVFitsInsert.configureOverride() defers to baseDbInsert
+	to raise NotImplementedError
+
+	* DbMSInsert.configureOverride() defers to baseDbInsert
+	to raise NotImplementedError
+
+2012-10-24  Ken Anderson  <kenwood@>
+
+	* __dates2mjd() now premeptively looks for MJD-OBS keyword.
+	No action and return if found.
+
+2012-10-14  aVakt  <vakt@aVakt.local>
+
+	* ChangeLog: v1.2 introduces a number of minor bug fixes from 1.0, 1.1
+
+	* Error status now returns -1 on VALIDATION errors.
+
+	* velrefMap updated to include mappings of single digits encountered in
+	in FITS VELREF keywords. Single digits are not nominal values, but are
+	now handled.
+
+	* dbinsert call on dbMsInsert() fixed (is dbMSInsert())
+
+	* constructor interface fixed for NotImplemented classes,
+	dbMSInsert, dbUVFitsInsert
+
+	* Fixed str concat exception in executeInsert() (float ndims
+	adding to str)
+
+
+2012-10-08  aVakt  <vakt@aVakt.local>
+
+	* ChangeLog: v1.1 introduces minor updates to version 1.0
+
+	* '--nodb' A cli switch that exits before db insertion.
+	Exits prior to the call on executeInsert().
+	This is alterated in dbinsert.py and utils.rUtils
+
+	* 'ENGINEERING' keyword added to the .override file;
+	indicates mddb package name, version.
+
+
+
+
+Copyright 1997, 1998 Free Software Foundation, Inc.
+Copying and distribution of this file, with or without modification, are
+permitted provided the copyright notice and this notice are preserved.

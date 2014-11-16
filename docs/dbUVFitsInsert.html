@@ -1,0 +1,128 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dbUVFitsInsert</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#336666">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dbUVFitsInsert</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/mddb/dbUVFitsInsert.py">/srv/cyberska/kenneth/sw/mddb/dbUVFitsInsert.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mddb.dbUVFitsInsert.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2012-03<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#009999">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#009999"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dbUVFitsInsert.html#DbUVFitsInsert">DbUVFitsInsert</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#99cccc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DbUVFitsInsert">class <strong>DbUVFitsInsert</strong></a>(<a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>)</font></td></tr>
+    
+<tr><td bgcolor="#99cccc"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dbUVFitsInsert.html#DbUVFitsInsert">DbUVFitsInsert</a></dd>
+<dd><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DbUVFitsInsert-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><a name="DbUVFitsInsert-buildOverride"><strong>buildOverride</strong></a>(self, header, uri, public)</dt><dd><tt>This&nbsp;method&nbsp;receives&nbsp;a&nbsp;filename&nbsp;as&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;textual&nbsp;header&nbsp;file,<br>
+and&nbsp;a&nbsp;URI&nbsp;to&nbsp;the&nbsp;described&nbsp;data&nbsp;resource.&nbsp;The&nbsp;file&nbsp;must&nbsp;be&nbsp;either&nbsp;a<br>
+pure&nbsp;header&nbsp;or&nbsp;a&nbsp;header&nbsp;as&nbsp;produced&nbsp;by&nbsp;the&nbsp;metaData&nbsp;package.<br>
+The&nbsp;file&nbsp;can&nbsp;have&nbsp;an&nbsp;arbitrary&nbsp;location,&nbsp;but&nbsp;the&nbsp;<a href="#DbUVFitsInsert-buildOverride">buildOverride</a>()&nbsp;method<br>
+will&nbsp;put&nbsp;a&nbsp;copy&nbsp;in&nbsp;the&nbsp;MDDBEnv.HEADERS&nbsp;directory&nbsp;as&nbsp;a&nbsp;matter&nbsp;of&nbsp;record.<br>
+Method&nbsp;will&nbsp;build&nbsp;a&nbsp;full&nbsp;override&nbsp;file&nbsp;ready&nbsp;for&nbsp;MDDB&nbsp;insertion.&nbsp;If<br>
+no&nbsp;path&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;header,&nbsp;and&nbsp;the&nbsp;file&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;'.',<br>
+the&nbsp;MDDBEnv.DATASETS&nbsp;directory&nbsp;is&nbsp;applied.&nbsp;The&nbsp;public&nbsp;parameter&nbsp;is&nbsp;a&nbsp;<br>
+boolean&nbsp;indicating&nbsp;public&nbsp;access&nbsp;or&nbsp;not.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;bool&gt;&nbsp;header&nbsp;name,&nbsp;uri,&nbsp;public<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;,&nbsp;string&nbsp;indicating&nbsp;file&nbsp;written</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-configureOverride"><strong>configureOverride</strong></a>(self)</dt><dd><tt>Abstract&nbsp;method.&nbsp;This&nbsp;method&nbsp;must&nbsp;be&nbsp;implemented&nbsp;in&nbsp;the&nbsp;subclass,&nbsp;<br>
+as&nbsp;each&nbsp;metadata&nbsp;data&nbsp;type&nbsp;will&nbsp;require&nbsp;a&nbsp;specific&nbsp;set&nbsp;of&nbsp;data<br>
+engineering&nbsp;tasks.&nbsp;This&nbsp;method&nbsp;bundles&nbsp;the&nbsp;calls&nbsp;to&nbsp;these&nbsp;private&nbsp;methods,<br>
+examples&nbsp;of&nbsp;which&nbsp;will&nbsp;be&nbsp;to&nbsp;validate,&nbsp;check&nbsp;coordinate&nbsp;reference&nbsp;system,<br>
+insert&nbsp;CD&nbsp;matrix,&nbsp;insert&nbsp;DB&nbsp;keys,&nbsp;and&nbsp;various&nbsp;other&nbsp;dreadfully&nbsp;tedious&nbsp;chores.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;void&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-confirmOverride"><strong>confirmOverride</strong></a>(self, ofile, ftype)</dt><dd><tt>This&nbsp;method&nbsp;confirms&nbsp;the&nbsp;presence&nbsp;of&nbsp;keyword&nbsp;subsets&nbsp;for&nbsp;each&nbsp;data&nbsp;type,&nbsp;<br>
+FITS,&nbsp;CASA&nbsp;Image,&nbsp;UVFits,&nbsp;and&nbsp;UV&nbsp;MS.&nbsp;The&nbsp;method&nbsp;should&nbsp;return&nbsp;True&nbsp;on&nbsp;successful<br>
+testing,&nbsp;or&nbsp;the&nbsp;filename&nbsp;of&nbsp;a&nbsp;validation&nbsp;error/warning&nbsp;file.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;override&nbsp;fileaname,&nbsp;filetype,&nbsp;collid<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-executeInsert"><strong>executeInsert</strong></a>(self, collid, oride, uri)</dt><dd><tt>Run&nbsp;fits2caom,&nbsp;called&nbsp;from&nbsp;super()&nbsp;in&nbsp;the&nbsp;subclass.&nbsp;Subclasses<br>
+*must*&nbsp;define&nbsp;<br>
+&nbsp;<br>
+self.<strong>cfgf</strong><br>
+self.<strong>deff</strong><br>
+&nbsp;<br>
+which&nbsp;are&nbsp;the&nbsp;CAOM&nbsp;db&nbsp;config,&nbsp;defaults&nbsp;files,&nbsp;respectively.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;collection&nbsp;id,&nbsp;override&nbsp;file,&nbsp;uri<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-printOverride"><strong>printOverride</strong></a>(self, lines)</dt><dd><tt>Print&nbsp;the&nbsp;override&nbsp;lines&nbsp;to&nbsp;stdout.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-writeOverride"><strong>writeOverride</strong></a>(self, overrideLines, overrideName)</dt><dd><tt>Write&nbsp;the&nbsp;override&nbsp;file&nbsp;actual&nbsp;into&nbsp;$DQS/OVERRIDE.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;&lt;string&gt;&nbsp;list&nbsp;of&nbsp;override&nbsp;header&nbsp;lines,&nbsp;override&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;&nbsp;overrride&nbsp;file&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="DbUVFitsInsert-writeValidation"><strong>writeValidation</strong></a>(self, ofile)</dt><dd><tt>Write&nbsp;a&nbsp;validation&nbsp;file&nbsp;from&nbsp;the&nbsp;self.<strong>validationMsg</strong>&nbsp;object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#00477d">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#00477d"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

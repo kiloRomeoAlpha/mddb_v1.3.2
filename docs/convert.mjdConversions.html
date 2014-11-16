@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module convert.mjdConversions</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#336666">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="convert.html"><font color="#ffffff">convert</font></a>.mjdConversions</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/mddb/convert/mjdConversions.py">/srv/cyberska/kenneth/sw/mddb/convert/mjdConversions.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mddb.mjdConversions.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2011-11<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#0066b3">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#0066b3"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-base60_to_decimal"><strong>base60_to_decimal</strong></a>(xyz, delimiter<font color="#909090">=None</font>)</dt><dd><tt>Decimal&nbsp;value&nbsp;from&nbsp;numbers&nbsp;in&nbsp;sexagesimal&nbsp;system.&nbsp;<br>
+&nbsp;<br>
+The&nbsp;input&nbsp;value&nbsp;can&nbsp;be&nbsp;either&nbsp;a&nbsp;floating&nbsp;point&nbsp;number&nbsp;or&nbsp;a&nbsp;string<br>
+such&nbsp;as&nbsp;"hh&nbsp;mm&nbsp;ss.ss"&nbsp;or&nbsp;"dd&nbsp;mm&nbsp;ss.ss".&nbsp;Delimiters&nbsp;other&nbsp;than&nbsp;"&nbsp;"<br>
+can&nbsp;be&nbsp;specified&nbsp;using&nbsp;the&nbsp;keyword&nbsp;``delimiter``.</tt></dd></dl>
+ <dl><dt><a name="-caldate"><strong>caldate</strong></a>(mjd)</dt><dd><tt>Given&nbsp;mjd&nbsp;return&nbsp;calendar&nbsp;date.&nbsp;<br>
+&nbsp;<br>
+Retrns&nbsp;a&nbsp;tuple&nbsp;(year,month,day,hour,minute,second).&nbsp;The&nbsp;last&nbsp;is&nbsp;a<br>
+floating&nbsp;point&nbsp;number&nbsp;and&nbsp;others&nbsp;are&nbsp;integers.&nbsp;The&nbsp;precision&nbsp;in<br>
+seconds&nbsp;is&nbsp;about&nbsp;1e-4.&nbsp;<br>
+&nbsp;<br>
+To&nbsp;convert&nbsp;jd&nbsp;to&nbsp;mjd&nbsp;use&nbsp;jd&nbsp;-&nbsp;2400000.5.&nbsp;In&nbsp;this&nbsp;module&nbsp;2400000.5&nbsp;is<br>
+stored&nbsp;in&nbsp;MJD0.</tt></dd></dl>
+ <dl><dt><a name="-decimal_to_base60"><strong>decimal_to_base60</strong></a>(deci, precision<font color="#909090">=1e-08</font>)</dt><dd><tt>Converts&nbsp;decimal&nbsp;number&nbsp;into&nbsp;sexagesimal&nbsp;number&nbsp;parts.&nbsp;<br>
+&nbsp;<br>
+``deci``&nbsp;is&nbsp;the&nbsp;decimal&nbsp;number&nbsp;to&nbsp;be&nbsp;converted.&nbsp;``precision``&nbsp;is&nbsp;how<br>
+close&nbsp;the&nbsp;multiple&nbsp;of&nbsp;60&nbsp;and&nbsp;3600,&nbsp;for&nbsp;example&nbsp;minutes&nbsp;and&nbsp;seconds,<br>
+are&nbsp;to&nbsp;60.0&nbsp;before&nbsp;they&nbsp;are&nbsp;rounded&nbsp;to&nbsp;the&nbsp;higher&nbsp;quantity,&nbsp;for<br>
+example&nbsp;hours&nbsp;and&nbsp;minutes.</tt></dd></dl>
+ <dl><dt><a name="-julian_date"><strong>julian_date</strong></a>(year, month, day, hour, minute, second)</dt><dd><tt>Given&nbsp;year,&nbsp;month,&nbsp;day,&nbsp;hour,&nbsp;minute&nbsp;and&nbsp;second&nbsp;return&nbsp;JD.<br>
+&nbsp;<br>
+``year``,&nbsp;``month``,&nbsp;``day``,&nbsp;``hour``&nbsp;and&nbsp;``minute``&nbsp;are&nbsp;integers,<br>
+truncates&nbsp;fractional&nbsp;part;&nbsp;``second``&nbsp;is&nbsp;a&nbsp;floating&nbsp;point&nbsp;number.<br>
+For&nbsp;BC&nbsp;year:&nbsp;use&nbsp;-(year-1).&nbsp;Example:&nbsp;1&nbsp;BC&nbsp;=&nbsp;0,&nbsp;1000&nbsp;BC&nbsp;=&nbsp;-999.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MJD0</strong> = 2400000.5<br>
+<strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#00477d">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#00477d"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

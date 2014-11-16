@@ -1,0 +1,376 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dbFitsInsert</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#336666">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dbFitsInsert</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/mddb/dbFitsInsert.py">/srv/cyberska/kenneth/sw/mddb/dbFitsInsert.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;DQS&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mddb.dbFitsInsert.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2012-03<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#0066b3">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#0066b3"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="convert.keymaps.html">convert.keymaps</a><br>
+</td><td width="25%" valign=top><a href="convert.mjdConversions.html">convert.mjdConversions</a><br>
+</td><td width="25%" valign=top><a href="db.xDBKeys.html">db.xDBKeys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#009999">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#009999"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dbFitsInsert.html#DbFitsInsert">DbFitsInsert</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#IndexError">exceptions.IndexError</a>(<a href="exceptions.html#LookupError">exceptions.LookupError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dbFitsInsert.html#FitsHeaderError">FitsHeaderError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#99cccc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DbFitsInsert">class <strong>DbFitsInsert</strong></a>(<a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>)</font></td></tr>
+    
+<tr><td bgcolor="#99cccc"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dbFitsInsert.html#DbFitsInsert">DbFitsInsert</a></dd>
+<dd><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__assertCDMatrix"><strong>_DbFitsInsert__assertCDMatrix</strong></a> = __assertCDMatrix(self, lines)</dt><dd><tt>Determine&nbsp;if&nbsp;a&nbsp;CD&nbsp;matrix&nbsp;is&nbsp;present&nbsp;in&nbsp;the&nbsp;header.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;bool&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__computeMatrix"><strong>_DbFitsInsert__computeMatrix</strong></a> = __computeMatrix(self, cdelt1, cdelt2, rho)</dt><dd><tt>Compute&nbsp;the&nbsp;Coordinate&nbsp;Description&nbsp;matrix.&nbsp;Caller&nbsp;passes<br>
+three&nbsp;arguments:&nbsp;CDELT1,&nbsp;CDELT2,&nbsp;CROTA2,&nbsp;the&nbsp;rotation&nbsp;angle&nbsp;if&nbsp;<br>
+any.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;list&nbsp;of&nbsp;four&nbsp;(4)&nbsp;CD&nbsp;matrix&nbsp;values&nbsp;(floats).</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__dates2mjd"><strong>_DbFitsInsert__dates2mjd</strong></a> = __dates2mjd(self, lines)</dt><dd><tt>For&nbsp;DATE&nbsp;like&nbsp;header&nbsp;keywords&nbsp;produce&nbsp;an&nbsp;MJD.&nbsp;CAOM&nbsp;model&nbsp;requires<br>
+dates&nbsp;in&nbsp;MJD.&nbsp;'MJD-OBS'&nbsp;keyword&nbsp;is&nbsp;inserted,&nbsp;as&nbsp;are&nbsp;CTYPE5,CUNIT5,<br>
+CRPIX5,CRVAL5&nbsp;CAOM&nbsp;representation&nbsp;of&nbsp;CAOM&nbsp;time&nbsp;config.<br>
+&nbsp;<br>
+A&nbsp;TypeError&nbsp;is&nbsp;raised&nbsp;if&nbsp;dateObsIndex&nbsp;remains&nbsp;&lt;NoneType&gt;,&nbsp;i.e.&nbsp;DATE-OBS<br>
+is&nbsp;not&nbsp;found.&nbsp;A&nbsp;default&nbsp;DATE-OBS&nbsp;is&nbsp;then&nbsp;inserted&nbsp;at&nbsp;the&nbsp;arbitrary&nbsp;index<br>
+of&nbsp;20.&nbsp;Default&nbsp;date&nbsp;is&nbsp;2020-01-01.<br>
+&nbsp;<br>
+N.B.&nbsp;Future&nbsp;implementations&nbsp;will&nbsp;examine&nbsp;other&nbsp;possible&nbsp;observation&nbsp;date<br>
+keywords&nbsp;that&nbsp;may&nbsp;be&nbsp;used,&nbsp;eg.,&nbsp;OBSDATE,&nbsp;START-OBS,&nbsp;...<br>
+&nbsp;<br>
+MJD&nbsp;zero&nbsp;point&nbsp;=&nbsp;2400000.5<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;a&nbsp;set&nbsp;of&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__getKeyWord"><strong>_DbFitsInsert__getKeyWord</strong></a> = __getKeyWord(self, line)</dt><dd><tt>Pare&nbsp;a&nbsp;keyword&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__getNumVal"><strong>_DbFitsInsert__getNumVal</strong></a> = __getNumVal(self, line)</dt><dd><tt>Pare&nbsp;a&nbsp;numeric&nbsp;value&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__getStringVal"><strong>_DbFitsInsert__getStringVal</strong></a> = __getStringVal(self, line)</dt><dd><tt>Pare&nbsp;string&nbsp;value&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__insertCDMatrix"><strong>_DbFitsInsert__insertCDMatrix</strong></a> = __insertCDMatrix(self, lines)</dt><dd><tt>Determine&nbsp;if&nbsp;a&nbsp;CD&nbsp;matrix&nbsp;is&nbsp;present&nbsp;in&nbsp;the&nbsp;header&nbsp;lines&nbsp;passed&nbsp;by<br>
+the&nbsp;caller.&nbsp;&nbsp;If&nbsp;no&nbsp;CD&nbsp;matrix&nbsp;is&nbsp;found,&nbsp;select&nbsp;the&nbsp;CDELTn/CROTA[n]&nbsp;keywords,<br>
+calcuate&nbsp;the&nbsp;transformation,&nbsp;and&nbsp;insert&nbsp;the&nbsp;new&nbsp;CDn_n&nbsp;keywords&nbsp;into&nbsp;the&nbsp;<br>
+header&nbsp;lines.&nbsp;The&nbsp;CDELTA-CDMatrix&nbsp;transformation&nbsp;is&nbsp;performed&nbsp;to&nbsp;the&nbsp;FITS<br>
+specification&nbsp;(Calabretta&nbsp;and&nbsp;Geisen,&nbsp;2002).&nbsp;N.B.&nbsp;CDELTA1&nbsp;and&nbsp;CDELTA2&nbsp;are<br>
+assumed&nbsp;to&nbsp;conform&nbsp;to&nbsp;FITS&nbsp;convention,&nbsp;where&nbsp;CDELTA1&nbsp;=&nbsp;RA,&nbsp;CDELTA2&nbsp;=&nbsp;Dec,<br>
+and&nbsp;specified&nbsp;by&nbsp;the&nbsp;above&nbsp;cited&nbsp;FITS&nbsp;standard.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;list&nbsp;of&nbsp;strings&nbsp;from&nbsp;FITS&nbsp;header&nbsp;file.<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__insertDBKeys"><strong>_DbFitsInsert__insertDBKeys</strong></a> = __insertDBKeys(self, headerLines, uri)</dt><dd><tt>Insert&nbsp;required&nbsp;MDDB&nbsp;keywords&nbsp;for&nbsp;CAOM&nbsp;database&nbsp;insertion.<br>
+See&nbsp;xDBkeys&nbsp;module.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;line&nbsp;strings<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__naxis"><strong>_DbFitsInsert__naxis</strong></a> = __naxis(self, lines)</dt><dd><tt>Return&nbsp;the&nbsp;number&nbsp;of&nbsp;dimensions&nbsp;of&nbsp;the&nbsp;image.<br>
+&nbsp;<br>
+parameters:&nbsp;&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;int&gt;,&nbsp;naxis&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__parseISODate"><strong>_DbFitsInsert__parseISODate</strong></a> = __parseISODate(self, dval)</dt><dd><tt>Method&nbsp;receives&nbsp;a&nbsp;date-time&nbsp;of&nbsp;the&nbsp;expected&nbsp;ISO8601&nbsp;format<br>
+returns&nbsp;a&nbsp;set&nbsp;of&nbsp;values&nbsp;for&nbsp;year,&nbsp;month,&nbsp;day,&nbsp;hour,&nbsp;min,&nbsp;sec,<br>
+where&nbsp;ISO8601&nbsp;format&nbsp;is<br>
+&nbsp;<br>
+yyyy-mm-ddThh:mm:ss.ssss<br>
+&nbsp;<br>
+eg.,<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;.__parseISODate('2011-09-10T18:28:58.511999')<br>
+2011,9,10,18,28,58.511999<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;DATE-OBS&nbsp;ISO&nbsp;8601&nbsp;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;&nbsp;&nbsp;a&nbsp;list&nbsp;of&nbsp;strings,&nbsp;as<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['yyyy','mm','dd,'hh','mm','ss.sss']</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__pickRotation"><strong>_DbFitsInsert__pickRotation</strong></a> = __pickRotation(self, rota1, rota2)</dt><dd><tt>Pick&nbsp;the&nbsp;rotation&nbsp;angle&nbsp;of&nbsp;two,&nbsp;where&nbsp;rota2&nbsp;is&nbsp;preferred.<br>
+Zero&nbsp;if&nbsp;both&nbsp;NoneType.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__setCoordSys"><strong>_DbFitsInsert__setCoordSys</strong></a> = __setCoordSys(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;coordinate&nbsp;reference&nbsp;system,&nbsp;if&nbsp;none&nbsp;is&nbsp;specified.&nbsp;This<br>
+coordinate&nbsp;system&nbsp;is&nbsp;defined&nbsp;by&nbsp;keywords,&nbsp;EQUINOX,&nbsp;RADESYS.&nbsp;These&nbsp;may&nbsp;or<br>
+may&nbsp;not&nbsp;be&nbsp;present,&nbsp;though&nbsp;at&nbsp;least&nbsp;one&nbsp;(1)&nbsp;is&nbsp;required&nbsp;for&nbsp;determination.<br>
+The&nbsp;FITS&nbsp;WCS&nbsp;spec&nbsp;(Calabretta&nbsp;&amp;&nbsp;Greisen,&nbsp;A&amp;A,&nbsp;2002)&nbsp;states&nbsp;a&nbsp;number&nbsp;of&nbsp;<br>
+defaults&nbsp;based&nbsp;upon&nbsp;the&nbsp;presence&nbsp;and/or&nbsp;absence&nbsp;of&nbsp;these&nbsp;keys.<br>
+&nbsp;<br>
+If&nbsp;not&nbsp;RADESYS&nbsp;and&nbsp;not&nbsp;EQUINOX&nbsp;::&nbsp;RADESYS&nbsp;=&nbsp;ICRS<br>
+&nbsp;<br>
+EQUINOX&nbsp;&gt;&nbsp;1984&nbsp;::&nbsp;RADESYS&nbsp;=&nbsp;FK5<br>
+EQUINOX&nbsp;&lt;&nbsp;1984&nbsp;::&nbsp;RADESYS&nbsp;=&nbsp;FK4<br>
+&nbsp;<br>
+Furthermore,&nbsp;an&nbsp;extant&nbsp;keyword&nbsp;'EPOCH'&nbsp;is&nbsp;replaced&nbsp;by&nbsp;'EQUINOX'&nbsp;using<br>
+the&nbsp;value&nbsp;supplied,&nbsp;and&nbsp;RADESYS&nbsp;is&nbsp;written&nbsp;appropros&nbsp;to&nbsp;the&nbsp;value.<br>
+&nbsp;<br>
+Calabretta&nbsp;&amp;&nbsp;Greisen&nbsp;state&nbsp;that&nbsp;if&nbsp;neither&nbsp;'EPOCH'&nbsp;nor&nbsp;'EQUINOX'&nbsp;are<br>
+present,&nbsp;the&nbsp;default&nbsp;EQUINOX&nbsp;shall&nbsp;be&nbsp;1950.0&nbsp;(Calabretta&nbsp;&amp;&nbsp;Greisen,&nbsp;A&amp;A,<br>
+2002,&nbsp;p.1082).&nbsp;However,&nbsp;it&nbsp;is&nbsp;the&nbsp;judgement&nbsp;of&nbsp;the&nbsp;CyberSKA&nbsp;project&nbsp;that<br>
+this&nbsp;default&nbsp;specification&nbsp;be&nbsp;overridden&nbsp;here&nbsp;and&nbsp;the&nbsp;value&nbsp;of&nbsp;2000.0&nbsp;be<br>
+used&nbsp;instead.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;greps&nbsp;the&nbsp;coordinate&nbsp;reference&nbsp;system&nbsp;keywords&nbsp;and&nbsp;values<br>
+from&nbsp;the&nbsp;header&nbsp;lines&nbsp;into&nbsp;a&nbsp;dict&nbsp;for&nbsp;presence&nbsp;testing&nbsp;and&nbsp;evaluation.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__setFreqUnit"><strong>_DbFitsInsert__setFreqUnit</strong></a> = __setFreqUnit(self, lines)</dt><dd><tt>Ensure&nbsp;the&nbsp;Frequency&nbsp;Units&nbsp;for&nbsp;the&nbsp;overrride&nbsp;are&nbsp;set&nbsp;to&nbsp;<br>
+'Hz'&nbsp;exactly.&nbsp;This&nbsp;is&nbsp;required&nbsp;by&nbsp;fits2caom.&nbsp;Inhomogeneity&nbsp;exists&nbsp;in<br>
+FITS&nbsp;headers&nbsp;and&nbsp;the&nbsp;spectral&nbsp;units&nbsp;may&nbsp;be&nbsp;represented&nbsp;by&nbsp;literals&nbsp;like<br>
+'HZ'&nbsp;or&nbsp;even&nbsp;'Hertz'.&nbsp;'Hz'&nbsp;MUST&nbsp;be&nbsp;the&nbsp;unit&nbsp;for&nbsp;the&nbsp;Frequency&nbsp;axis.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__setMetaRelease"><strong>_DbFitsInsert__setMetaRelease</strong></a> = __setMetaRelease(self, lines, public)</dt><dd><tt>Set&nbsp;the&nbsp;Meta&nbsp;Release&nbsp;Date&nbsp;as&nbsp;the&nbsp;override&nbsp;keyword,&nbsp;MRELEASE,&nbsp;with<br>
+the&nbsp;current&nbsp;date.&nbsp;&nbsp;This&nbsp;is&nbsp;needed&nbsp;for&nbsp;CAOM&nbsp;database&nbsp;queries&nbsp;to&nbsp;<br>
+'see'&nbsp;the&nbsp;metadata.</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__setSpecSys"><strong>_DbFitsInsert__setSpecSys</strong></a> = __setSpecSys(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;spectral&nbsp;coordinate&nbsp;reference&nbsp;system,&nbsp;SPECSYS,&nbsp;if&nbsp;not&nbsp;present<br>
+in&nbsp;the&nbsp;header.&nbsp;SPECSYS&nbsp;may&nbsp;be&nbsp;determined&nbsp;from&nbsp;the&nbsp;VELREF&nbsp;keyword&nbsp;value,<br>
+if&nbsp;present.&nbsp;The&nbsp;VELREF&nbsp;value&nbsp;is&nbsp;interpolated&nbsp;to&nbsp;the&nbsp;respective&nbsp;SPECSYS<br>
+string&nbsp;value&nbsp;via&nbsp;the&nbsp;keymaps.velrefMap&nbsp;dict,&nbsp;which&nbsp;implements<br>
+Table&nbsp;8&nbsp;of&nbsp;Greisen&nbsp;et&nbsp;al,&nbsp;2002&nbsp;and&nbsp;the&nbsp;casacore&nbsp;VELREF&nbsp;bitmap:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Radio&nbsp;256+&nbsp;&nbsp;1&nbsp;LSRK,&nbsp;2&nbsp;HELIOCENT,&nbsp;3&nbsp;TOPOCENT,&nbsp;4&nbsp;LSRD,&nbsp;5&nbsp;GEOCENT,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;SOURCE,&nbsp;7&nbsp;GALACTOC<br>
+&nbsp;<br>
+If&nbsp;neither&nbsp;VELREF&nbsp;nor&nbsp;SPECSYS&nbsp;are&nbsp;found,&nbsp;SPECSYS&nbsp;defaults&nbsp;to&nbsp;'TOPOCENT'.<br>
+&nbsp;<br>
+(See&nbsp;Greisen&nbsp;et&nbsp;al,&nbsp;Representation&nbsp;of&nbsp;Spectral&nbsp;Coordinates&nbsp;in&nbsp;FITS,<br>
+2002,&nbsp;Table&nbsp;8,&nbsp;p.&nbsp;14)<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;list&nbsp;of&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__stripComment"><strong>_DbFitsInsert__stripComment</strong></a> = __stripComment(self, lines)</dt><dd><tt>Strip&nbsp;the&nbsp;comments&nbsp;from&nbsp;any&nbsp;header&nbsp;lines.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;lines&nbsp;as&nbsp;strings<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;lines,&nbsp;stripped&nbsp;of&nbsp;comments</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-_DbFitsInsert__validate"><strong>_DbFitsInsert__validate</strong></a> = __validate(self, fitsHdr)</dt><dd><tt>Method&nbsp;determines&nbsp;whether&nbsp;the&nbsp;file&nbsp;passed&nbsp;by&nbsp;Caller&nbsp;is&nbsp;a&nbsp;properly<br>
+formed&nbsp;textual&nbsp;fits&nbsp;header,&nbsp;as&nbsp;a&nbsp;'.hdr'&nbsp;file&nbsp;written&nbsp;by&nbsp;metaData.<br>
+This&nbsp;will&nbsp;be&nbsp;the&nbsp;full&nbsp;path&nbsp;name&nbsp;to&nbsp;the&nbsp;copy&nbsp;of&nbsp;the&nbsp;fits&nbsp;header&nbsp;placed&nbsp;in<br>
+MDDBEnv.HEADERS<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;header&nbsp;file&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;list&nbsp;of&nbsp;read&nbsp;lines&nbsp;from&nbsp;fits&nbsp;header&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-configureOverride"><strong>configureOverride</strong></a>(self, hdr, uri, public)</dt><dd><tt>Bundles&nbsp;calls&nbsp;to&nbsp;private&nbsp;methods&nbsp;to&nbsp;validate,&nbsp;check&nbsp;coordinate<br>
+reference&nbsp;system,&nbsp;insert&nbsp;CD&nbsp;matrix,&nbsp;insert&nbsp;DB&nbsp;keys,&nbsp;and&nbsp;various&nbsp;other<br>
+dreadfully&nbsp;tedious&nbsp;chores.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;header&nbsp;file&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-executeInsert"><strong>executeInsert</strong></a>(self, collid, oride, uri)</dt><dd><tt>Run&nbsp;fits2caom.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;&nbsp;collection&nbsp;id,&nbsp;override&nbsp;file,&nbsp;uri<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><a name="DbFitsInsert-__init__"><strong>__init__</strong></a>(self, configFile, verbose)</dt><dd><tt>Constructor&nbsp;for&nbsp;the&nbsp;base&nbsp;insert&nbsp;class.&nbsp;Builds&nbsp;the&nbsp;environment.<br>
+The&nbsp;datasetType&nbsp;is&nbsp;determined&nbsp;by&nbsp;an&nbsp;upper&nbsp;layer,&nbsp;and&nbsp;the&nbsp;appropriate<br>
+subclass&nbsp;is&nbsp;called.&nbsp;&nbsp;This&nbsp;class&nbsp;should&nbsp;be&nbsp;not&nbsp;be&nbsp;called&nbsp;directly.<br>
+It&nbsp;provides&nbsp;no&nbsp;data&nbsp;engineering&nbsp;of&nbsp;header&nbsp;data&nbsp;into&nbsp;CAOM&nbsp;compatible.<br>
+That&nbsp;is&nbsp;up&nbsp;to&nbsp;the&nbsp;apprpriate&nbsp;subclass&nbsp;and&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;datasetType,<br>
+i.e.&nbsp;FITS,&nbsp;CASA&nbsp;Image,&nbsp;UVFITS,&nbsp;UV&nbsp;MS.&nbsp;Each&nbsp;of&nbsp;these&nbsp;types&nbsp;will&nbsp;be<br>
+provided&nbsp;a&nbsp;specific&nbsp;subclass&nbsp;in&nbsp;this&nbsp;package.</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-buildOverride"><strong>buildOverride</strong></a>(self, header, uri, public)</dt><dd><tt>This&nbsp;method&nbsp;receives&nbsp;a&nbsp;filename&nbsp;as&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;textual&nbsp;header&nbsp;file,<br>
+and&nbsp;a&nbsp;URI&nbsp;to&nbsp;the&nbsp;described&nbsp;data&nbsp;resource.&nbsp;The&nbsp;file&nbsp;must&nbsp;be&nbsp;either&nbsp;a<br>
+pure&nbsp;header&nbsp;or&nbsp;a&nbsp;header&nbsp;as&nbsp;produced&nbsp;by&nbsp;the&nbsp;metaData&nbsp;package.<br>
+The&nbsp;file&nbsp;can&nbsp;have&nbsp;an&nbsp;arbitrary&nbsp;location,&nbsp;but&nbsp;the&nbsp;<a href="#DbFitsInsert-buildOverride">buildOverride</a>()&nbsp;method<br>
+will&nbsp;put&nbsp;a&nbsp;copy&nbsp;in&nbsp;the&nbsp;MDDBEnv.HEADERS&nbsp;directory&nbsp;as&nbsp;a&nbsp;matter&nbsp;of&nbsp;record.<br>
+Method&nbsp;will&nbsp;build&nbsp;a&nbsp;full&nbsp;override&nbsp;file&nbsp;ready&nbsp;for&nbsp;MDDB&nbsp;insertion.&nbsp;If<br>
+no&nbsp;path&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;header,&nbsp;and&nbsp;the&nbsp;file&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;'.',<br>
+the&nbsp;MDDBEnv.DATASETS&nbsp;directory&nbsp;is&nbsp;applied.&nbsp;The&nbsp;public&nbsp;parameter&nbsp;is&nbsp;a&nbsp;<br>
+boolean&nbsp;indicating&nbsp;public&nbsp;access&nbsp;or&nbsp;not.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;bool&gt;&nbsp;header&nbsp;name,&nbsp;uri,&nbsp;public<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;,&nbsp;string&nbsp;indicating&nbsp;file&nbsp;written</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-confirmOverride"><strong>confirmOverride</strong></a>(self, ofile, ftype)</dt><dd><tt>This&nbsp;method&nbsp;confirms&nbsp;the&nbsp;presence&nbsp;of&nbsp;keyword&nbsp;subsets&nbsp;for&nbsp;each&nbsp;data&nbsp;type,&nbsp;<br>
+FITS,&nbsp;CASA&nbsp;Image,&nbsp;UVFits,&nbsp;and&nbsp;UV&nbsp;MS.&nbsp;The&nbsp;method&nbsp;should&nbsp;return&nbsp;True&nbsp;on&nbsp;successful<br>
+testing,&nbsp;or&nbsp;the&nbsp;filename&nbsp;of&nbsp;a&nbsp;validation&nbsp;error/warning&nbsp;file.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;override&nbsp;fileaname,&nbsp;filetype,&nbsp;collid<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-printOverride"><strong>printOverride</strong></a>(self, lines)</dt><dd><tt>Print&nbsp;the&nbsp;override&nbsp;lines&nbsp;to&nbsp;stdout.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-writeOverride"><strong>writeOverride</strong></a>(self, overrideLines, overrideName)</dt><dd><tt>Write&nbsp;the&nbsp;override&nbsp;file&nbsp;actual&nbsp;into&nbsp;$DQS/OVERRIDE.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;&lt;string&gt;&nbsp;list&nbsp;of&nbsp;override&nbsp;header&nbsp;lines,&nbsp;override&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;&nbsp;overrride&nbsp;file&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="DbFitsInsert-writeValidation"><strong>writeValidation</strong></a>(self, ofile)</dt><dd><tt>Write&nbsp;a&nbsp;validation&nbsp;file&nbsp;from&nbsp;the&nbsp;self.<strong>validationMsg</strong>&nbsp;object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#99cccc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FitsHeaderError">class <strong>FitsHeaderError</strong></a>(<a href="exceptions.html#IndexError">exceptions.IndexError</a>)</font></td></tr>
+    
+<tr bgcolor="#99cccc"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raise&nbsp;this&nbsp;error&nbsp;when&nbsp;required&nbsp;metadata&nbsp;are&nbsp;missing&nbsp;from&nbsp;a&nbsp;FITS<br>
+header.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dbFitsInsert.html#FitsHeaderError">FitsHeaderError</a></dd>
+<dd><a href="exceptions.html#IndexError">exceptions.IndexError</a></dd>
+<dd><a href="exceptions.html#LookupError">exceptions.LookupError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#IndexError">exceptions.IndexError</a>:<br>
+<dl><dt><a name="FitsHeaderError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#IndexError">exceptions.IndexError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#FitsHeaderError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="FitsHeaderError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FitsHeaderError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FitsHeaderError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#FitsHeaderError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="FitsHeaderError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cos"><strong>cos</strong></a>(...)</dt><dd><tt><a href="#-cos">cos</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;cosine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-radians"><strong>radians</strong></a>(...)</dt><dd><tt><a href="#-radians">radians</a>(x)<br>
+&nbsp;<br>
+Convert&nbsp;angle&nbsp;x&nbsp;from&nbsp;degrees&nbsp;to&nbsp;radians.</tt></dd></dl>
+ <dl><dt><a name="-sin"><strong>sin</strong></a>(...)</dt><dd><tt><a href="#-sin">sin</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;sine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#00477d">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#00477d"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

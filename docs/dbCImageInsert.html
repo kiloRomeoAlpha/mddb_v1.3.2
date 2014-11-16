@@ -1,0 +1,439 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dbCImageInsert</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#336666">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dbCImageInsert</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/mddb/dbCImageInsert.py">/srv/cyberska/kenneth/sw/mddb/dbCImageInsert.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;DQS&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mddb.dbCImageInsert.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2012-03<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#0066b3">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#0066b3"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="convert.keymaps.html">convert.keymaps</a><br>
+</td><td width="25%" valign=top><a href="db.xDBKeys.html">db.xDBKeys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#009999">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#009999"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dbCImageInsert.html#DbCImageInsert">DbCImageInsert</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#IndexError">exceptions.IndexError</a>(<a href="exceptions.html#LookupError">exceptions.LookupError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dbCImageInsert.html#CasaImageHeaderError">CasaImageHeaderError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#99cccc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CasaImageHeaderError">class <strong>CasaImageHeaderError</strong></a>(<a href="exceptions.html#IndexError">exceptions.IndexError</a>)</font></td></tr>
+    
+<tr bgcolor="#99cccc"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raise&nbsp;this&nbsp;error&nbsp;when&nbsp;required&nbsp;metadata&nbsp;are&nbsp;missing&nbsp;from&nbsp;a&nbsp;Casa&nbsp;Image<br>
+header.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dbCImageInsert.html#CasaImageHeaderError">CasaImageHeaderError</a></dd>
+<dd><a href="exceptions.html#IndexError">exceptions.IndexError</a></dd>
+<dd><a href="exceptions.html#LookupError">exceptions.LookupError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#IndexError">exceptions.IndexError</a>:<br>
+<dl><dt><a name="CasaImageHeaderError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#IndexError">exceptions.IndexError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#CasaImageHeaderError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="CasaImageHeaderError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageHeaderError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHeaderError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#99cccc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DbCImageInsert">class <strong>DbCImageInsert</strong></a>(<a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>)</font></td></tr>
+    
+<tr><td bgcolor="#99cccc"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dbCImageInsert.html#DbCImageInsert">DbCImageInsert</a></dd>
+<dd><a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__computeMatrix"><strong>_DbCImageInsert__computeMatrix</strong></a> = __computeMatrix(self, cdelt1, cdelt2, rho<font color="#909090">=0</font>)</dt><dd><tt>Compute&nbsp;the&nbsp;Coordinate&nbsp;Description&nbsp;matrix.&nbsp;Caller&nbsp;passes<br>
+three&nbsp;arguments:&nbsp;CDELT1,&nbsp;CDELT2,&nbsp;CROTA2,&nbsp;the&nbsp;rotation&nbsp;angle&nbsp;if&nbsp;<br>
+any.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;,&nbsp;&lt;float&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;list&nbsp;of&nbsp;four&nbsp;(4)&nbsp;CD&nbsp;matrix&nbsp;values&nbsp;(floats).</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__dates2mjd"><strong>_DbCImageInsert__dates2mjd</strong></a> = __dates2mjd(self, lines)</dt><dd><tt>Null&nbsp;method&nbsp;(for&nbsp;now)</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__directionCoordUnits"><strong>_DbCImageInsert__directionCoordUnits</strong></a> = __directionCoordUnits(self, lines)</dt><dd><tt>Break&nbsp;out&nbsp;the&nbsp;direction&nbsp;coordinate&nbsp;(COORDINATE2)&nbsp;units,&nbsp;insert&nbsp;two<br>
+(2)&nbsp;lines&nbsp;for&nbsp;CUNITs.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;list<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__getKeyWord"><strong>_DbCImageInsert__getKeyWord</strong></a> = __getKeyWord(self, line)</dt><dd><tt>Pare&nbsp;a&nbsp;keyword&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__getNumVal"><strong>_DbCImageInsert__getNumVal</strong></a> = __getNumVal(self, line)</dt><dd><tt>Pare&nbsp;a&nbsp;numeric&nbsp;value&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;float&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__getStringVal"><strong>_DbCImageInsert__getStringVal</strong></a> = __getStringVal(self, line)</dt><dd><tt>Pare&nbsp;string&nbsp;value&nbsp;from&nbsp;a&nbsp;header&nbsp;line&nbsp;string.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__getValTuple"><strong>_DbCImageInsert__getValTuple</strong></a> = __getValTuple(self, line)</dt><dd><tt>Return&nbsp;a&nbsp;2-tuple&nbsp;of&nbsp;values&nbsp;from&nbsp;a&nbsp;multiply&nbsp;valued&nbsp;header&nbsp;line.<br>
+&nbsp;<br>
+egs.,<br>
+&gt;&gt;&gt;__getValTuple('POINTING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;03:41:47.8999999999&nbsp;&nbsp;&nbsp;+62.38.53.9999999988')<br>
+('03:41:47.8999999999',&nbsp;'+62.38.53.9999999988')<br>
+&gt;&gt;&gt;__getValTuple('COORDINATE2-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Declination,&nbsp;Right&nbsp;Ascension')<br>
+('Declination',&nbsp;'Right&nbsp;Ascension')<br>
+&nbsp;<br>
+N.B.&nbsp;This&nbsp;method&nbsp;handles&nbsp;only&nbsp;lines&nbsp;with&nbsp;two&nbsp;parsable&nbsp;values,&nbsp;as&nbsp;above.&nbsp;It&nbsp;is<br>
+inappropriate&nbsp;for&nbsp;lines&nbsp;containing&nbsp;more&nbsp;than&nbsp;two&nbsp;values.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;header&nbsp;line&nbsp;comprising&nbsp;a&nbsp;keyword&nbsp;and&nbsp;csv&nbsp;values.<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tuple&gt;,&nbsp;&nbsp;2-tuple&nbsp;of&nbsp;strings</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__insertCDMatrix"><strong>_DbCImageInsert__insertCDMatrix</strong></a> = __insertCDMatrix(self, lines)</dt><dd><tt>A&nbsp;CASA&nbsp;Image&nbsp;header&nbsp;will&nbsp;present&nbsp;the&nbsp;positional&nbsp;'cdelt'&nbsp;metadata&nbsp;in&nbsp;the<br>
+keyword&nbsp;'INCREMENT2',&nbsp;where&nbsp;'2'&nbsp;indicates&nbsp;the&nbsp;direction&nbsp;coordinate&nbsp;as&nbsp;defined<br>
+in&nbsp;the&nbsp;CASA&nbsp;Image&nbsp;metadata&nbsp;structure:<br>
+&nbsp;<br>
+direction0:cdelt:array([cdelta_RA,&nbsp;cedlta_Dec])<br>
+&nbsp;<br>
+The&nbsp;metaData&nbsp;package&nbsp;converts&nbsp;the&nbsp;values&nbsp;to&nbsp;degrees&nbsp;and&nbsp;reverses&nbsp;the&nbsp;order<br>
+for&nbsp;consistency&nbsp;with&nbsp;the&nbsp;axes&nbsp;as&nbsp;presented&nbsp;by&nbsp;the&nbsp;coordinates.get_axes()&nbsp;method<br>
+call.<br>
+&nbsp;<br>
+eg.,<br>
+&nbsp;<br>
+INCREMENT2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+0.0.1.0,&nbsp;-0.0.1.0<br>
+&nbsp;<br>
+These&nbsp;values&nbsp;are&nbsp;'unconverted'&nbsp;and&nbsp;the&nbsp;CD&nbsp;matrix&nbsp;transformation&nbsp;id&nbsp;performed.&nbsp;<br>
+New&nbsp;CDn_n&nbsp;keywords&nbsp;are&nbsp;inserted&nbsp;into&nbsp;the&nbsp;header&nbsp;lines.&nbsp;The&nbsp;INREMENT2-CDMatrix<br>
+transformation&nbsp;is&nbsp;performed&nbsp;to&nbsp;the&nbsp;FITS&nbsp;specification<br>
+(Calabretta&nbsp;and&nbsp;Geisen,&nbsp;2002).&nbsp;INCREMENT2[0]&nbsp;is&nbsp;DEC&nbsp;and&nbsp;INCREMENT2[1]&nbsp;is&nbsp;<br>
+RA.&nbsp;The&nbsp;final&nbsp;inserted&nbsp;CD&nbsp;matrix&nbsp;must&nbsp;adhere&nbsp;to&nbsp;the&nbsp;FITS&nbsp;specification&nbsp;for&nbsp;<br>
+fits2caom/CAOM&nbsp;compatibility,&nbsp;i.e.&nbsp;CD1_1&nbsp;is&nbsp;the&nbsp;RA&nbsp;component&nbsp;of&nbsp;the&nbsp;transformation<br>
+and&nbsp;CD2_2&nbsp;is&nbsp;the&nbsp;Dec&nbsp;component,&nbsp;with&nbsp;the&nbsp;cross&nbsp;components&nbsp;populated&nbsp;under&nbsp;<br>
+rotation&nbsp;and&nbsp;null&nbsp;otherwise.&nbsp;&nbsp;Rotation&nbsp;is&nbsp;not&nbsp;expected&nbsp;in&nbsp;CASA&nbsp;Images.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;list&nbsp;of&nbsp;strings&nbsp;from&nbsp;CASA&nbsp;Image&nbsp;header&nbsp;file.<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;,&nbsp;referenced&nbsp;list&nbsp;is&nbsp;updated.</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__insertDBKeys"><strong>_DbCImageInsert__insertDBKeys</strong></a> = __insertDBKeys(self, headerLines, uri)</dt><dd><tt>Insert&nbsp;required&nbsp;MDDB&nbsp;keywords&nbsp;for&nbsp;CAOM&nbsp;database&nbsp;insertion.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;line&nbsp;strings<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;,&nbsp;referenced&nbsp;list&nbsp;updated&nbsp;w/&nbsp;xdbkeys</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__revertFrequencies"><strong>_DbCImageInsert__revertFrequencies</strong></a> = __revertFrequencies(self, lines)</dt><dd><tt>Revert&nbsp;Frequency&nbsp;values&nbsp;in&nbsp;lines&nbsp;to&nbsp;simple&nbsp;'Hz'&nbsp;numbers.<br>
+Current,&nbsp;CASA&nbsp;Image&nbsp;headers&nbsp;will&nbsp;specify&nbsp;frequency&nbsp;values&nbsp;in<br>
+the&nbsp;COORDINATE0&nbsp;related&nbsp;keywords&nbsp;in&nbsp;'human&nbsp;readable'&nbsp;form.<br>
+&nbsp;<br>
+eg.,<br>
+REFERENCE0-VALUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;115,&nbsp;GHz<br>
+INCREMENT0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120&nbsp;MHz<br>
+REST-FREQUENCY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;115,&nbsp;GHz<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setCRVALS"><strong>_DbCImageInsert__setCRVALS</strong></a> = __setCRVALS(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;CRVAL&nbsp;keywords,&nbsp;keying&nbsp;on&nbsp;direction&nbsp;coordinate&nbsp;keyword,<br>
+REFERENCE2-VALUE.<br>
+&nbsp;<br>
+eg.,<br>
+&nbsp;<br>
+REFERENCE2-VALUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+44.55.19.95,&nbsp;04:45:31.695<br>
+&nbsp;<br>
+where&nbsp;the&nbsp;ordered&nbsp;values&nbsp;represent&nbsp;DEC,&nbsp;RA&nbsp;of&nbsp;the&nbsp;reference&nbsp;pixel.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setCTYPES"><strong>_DbCImageInsert__setCTYPES</strong></a> = __setCTYPES(self, lines)</dt><dd><tt>Convert&nbsp;COORDINATE[i]-NAME&nbsp;string&nbsp;values&nbsp;to&nbsp;acceptable&nbsp;FITS&nbsp;wcs&nbsp;<br>
+string&nbsp;values.<br>
+&nbsp;<br>
+Eg.,&nbsp;a&nbsp;nominal&nbsp;4D&nbsp;image&nbsp;cube&nbsp;w/&nbsp;freq,&nbsp;stokes,&nbsp;dec,&nbsp;ra.<br>
+&nbsp;<br>
+COORDINATE0-NAME&nbsp;&nbsp;&nbsp;&nbsp;Frequency&nbsp;--&gt;&nbsp;'FREQ'<br>
+COORDINATE1-NAME&nbsp;&nbsp;&nbsp;&nbsp;Stokes&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;'STOKES'<br>
+&nbsp;<br>
+Reconfiguring&nbsp;CASA&nbsp;Image&nbsp;direction&nbsp;coordinate&nbsp;requires&nbsp;separation,<br>
+truncation,&nbsp;then&nbsp;concatenation&nbsp;of&nbsp;the&nbsp;projection&nbsp;parameter.<br>
+&nbsp;<br>
+Eg.,<br>
+COORDINATE2-NAME&nbsp;&nbsp;&nbsp;&nbsp;Declination,&nbsp;Right&nbsp;Ascension<br>
+PROJECTION2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIN<br>
+&nbsp;<br>
+reconfigures&nbsp;to&nbsp;<br>
+&nbsp;<br>
+COORDINATE2_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DEC--SIN'<br>
+COORDINATE2_2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'RA---SIN'<br>
+&nbsp;<br>
+In&nbsp;the&nbsp;case&nbsp;of&nbsp;a&nbsp;CASA&nbsp;Image&nbsp;registered&nbsp;in&nbsp;galactic&nbsp;coords&nbsp;these&nbsp;values<br>
+will&nbsp;likely&nbsp;appear&nbsp;as&nbsp;<br>
+&nbsp;<br>
+COORDINATE[i]-NAME&nbsp;&nbsp;&nbsp;&nbsp;Latitude,&nbsp;Longitude<br>
+PROJECTION[i]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CAR<br>
+&nbsp;<br>
+and&nbsp;reconfigures&nbsp;as<br>
+&nbsp;<br>
+COORDINATE[i]_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GLON--CAR<br>
+COORDINATE[i]_2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GLAT--CAR<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setCoordSys"><strong>_DbCImageInsert__setCoordSys</strong></a> = __setCoordSys(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;coordinate&nbsp;reference&nbsp;system.&nbsp;For&nbsp;CASA&nbsp;Images,&nbsp;this&nbsp;should<br>
+only&nbsp;need&nbsp;to&nbsp;set&nbsp;a&nbsp;'RADESYS'&nbsp;keyword,&nbsp;as&nbsp;'EQUINOX'&nbsp;type&nbsp;is&nbsp;consistently<br>
+written&nbsp;in&nbsp;the&nbsp;metadata&nbsp;under&nbsp;the&nbsp;dict&nbsp;hierarchy,<br>
+&nbsp;<br>
+coordinates:&nbsp;direction0:&nbsp;system<br>
+&nbsp;<br>
+This&nbsp;frame&nbsp;is&nbsp;getable&nbsp;via&nbsp;a&nbsp;call&nbsp;to&nbsp;the&nbsp;directioncoordinate.get_frame()<br>
+method.<br>
+&nbsp;<br>
+which&nbsp;the&nbsp;metadata&nbsp;package&nbsp;writes&nbsp;as&nbsp;the&nbsp;keyword-val&nbsp;pair,<br>
+&nbsp;<br>
+eg.,&nbsp;FRAME2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;J2000<br>
+&nbsp;<br>
+Under&nbsp;MDDB-CAOM&nbsp;interoperability,&nbsp;a&nbsp;'RADESYS'&nbsp;keyword,&nbsp;or&nbsp;one&nbsp;describing<br>
+this&nbsp;value,&nbsp;must&nbsp;be&nbsp;written&nbsp;to&nbsp;the&nbsp;override&nbsp;file.<br>
+&nbsp;<br>
+The&nbsp;FITS&nbsp;WCS&nbsp;spec&nbsp;(Calabretta&nbsp;&amp;&nbsp;Greisen,&nbsp;A&amp;A,&nbsp;2002)&nbsp;states&nbsp;the&nbsp;conditions<br>
+that&nbsp;define&nbsp;the&nbsp;appropriate&nbsp;value&nbsp;for&nbsp;'RADESYS'&nbsp;for&nbsp;a&nbsp;given&nbsp;equinox.<br>
+&nbsp;<br>
+EQUINOX&nbsp;&gt;&nbsp;1984&nbsp;::&nbsp;RADESYS&nbsp;=&nbsp;FK5<br>
+EQUINOX&nbsp;&lt;&nbsp;1984&nbsp;::&nbsp;RADESYS&nbsp;=&nbsp;FK4<br>
+&nbsp;<br>
+Furthermore,&nbsp;frame&nbsp;values&nbsp;of&nbsp;'J2000',&nbsp;'B1950',&nbsp;and&nbsp;'B1950_VLA'&nbsp;are&nbsp;<br>
+swapped&nbsp;for&nbsp;numeric&nbsp;values&nbsp;stripped&nbsp;of&nbsp;alpha&nbsp;text&nbsp;due&nbsp;to&nbsp;fits2caom<br>
+exception&nbsp;throwing:<br>
+&nbsp;<br>
+'J2000'&nbsp;--&gt;&nbsp;'2000'<br>
+'B1950'&nbsp;--&gt;&nbsp;'1950',&nbsp;etc.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setDirectionRefPixels"><strong>_DbCImageInsert__setDirectionRefPixels</strong></a> = __setDirectionRefPixels(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;reference&nbsp;pixels&nbsp;for&nbsp;the&nbsp;direction&nbsp;coordinate&nbsp;to&nbsp;a&nbsp;pair&nbsp;of<br>
+CRPIX[i]&nbsp;keywords<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;list<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setImageDims"><strong>_DbCImageInsert__setImageDims</strong></a> = __setImageDims(self, lines)</dt><dd><tt>Method&nbsp;sets&nbsp;NAXIS[i]&nbsp;keywords&nbsp;based&nbsp;on&nbsp;the&nbsp;IMAGE-SHAPE<br>
+CASA&nbsp;Image&nbsp;keyword,&nbsp;which&nbsp;is&nbsp;of&nbsp;the&nbsp;form<br>
+&nbsp;<br>
+IMAGE-SHAPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1,&nbsp;1,&nbsp;64,&nbsp;64]<br>
+&nbsp;<br>
+where,<br>
+&nbsp;<br>
+NAXIS1&nbsp;=&nbsp;1<br>
+NAXIS2&nbsp;=&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+NAXIS3&nbsp;=&nbsp;64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+NAXIS4&nbsp;=&nbsp;64<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;int&gt;,&nbsp;&nbsp;number&nbsp;of&nbsp;image&nbsp;dimensions</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setMetaRelease"><strong>_DbCImageInsert__setMetaRelease</strong></a> = __setMetaRelease(self, lines, public)</dt><dd><tt>Set&nbsp;the&nbsp;Meta&nbsp;Release&nbsp;Date&nbsp;as&nbsp;the&nbsp;keyword,&nbsp;META-RELEASE,&nbsp;with<br>
+the&nbsp;current&nbsp;date.&nbsp;&nbsp;This&nbsp;is&nbsp;needed&nbsp;for&nbsp;CAOM&nbsp;database&nbsp;queries&nbsp;to&nbsp;<br>
+'see'&nbsp;the&nbsp;metadata.</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setOBSGEO"><strong>_DbCImageInsert__setOBSGEO</strong></a> = __setOBSGEO(self, lines)</dt><dd><tt>Set&nbsp;the&nbsp;OBSGEO-[XYZ]&nbsp;keywords&nbsp;based&nbsp;on&nbsp;and&nbsp;converted&nbsp;from&nbsp;CASA&nbsp;Image<br>
+keywords<br>
+&nbsp;<br>
+TELESCOP_LAT<br>
+TELESCOP_LON<br>
+TELESCOP_HGT&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;list&nbsp;of&nbsp;header&nbsp;lines<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__setParseSymbol"><strong>_DbCImageInsert__setParseSymbol</strong></a> = __setParseSymbol(self, lines, symbol)</dt><dd><tt>Inject&nbsp;the&nbsp;passed&nbsp;parse&nbsp;symbol&nbsp;into&nbsp;lines.&nbsp;The&nbsp;symbol&nbsp;is&nbsp;injected&nbsp;<br>
+into&nbsp;each&nbsp;line&nbsp;of&nbsp;lines&nbsp;after&nbsp;the&nbsp;first&nbsp;field&nbsp;of&nbsp;the&nbsp;line,&nbsp;i.e.&nbsp;a&nbsp;nominal<br>
+keyword,&nbsp;for&nbsp;fits2caom&nbsp;parsing.&nbsp;Currently,&nbsp;fits2caom&nbsp;parses&nbsp;on&nbsp;"="&nbsp;as&nbsp;<br>
+a&nbsp;field&nbsp;splitter&nbsp;in&nbsp;FITS&nbsp;headers.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;header&nbsp;lines&nbsp;list<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;,&nbsp;lines&nbsp;are&nbsp;updated&nbsp;with&nbsp;injected&nbsp;symbol</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__stripSlashN"><strong>_DbCImageInsert__stripSlashN</strong></a> = __stripSlashN(self, lines)</dt><dd><tt>Rid&nbsp;lines&nbsp;of&nbsp;newline&nbsp;chars,</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-_DbCImageInsert__validate"><strong>_DbCImageInsert__validate</strong></a> = __validate(self, cimageHdr)</dt><dd><tt>Method&nbsp;determines&nbsp;the&nbsp;type&nbsp;of&nbsp;file&nbsp;passed&nbsp;by&nbsp;Caller,&nbsp;whether&nbsp;a<br>
+header&nbsp;file&nbsp;contains&nbsp;some&nbsp;CASA&nbsp;Image&nbsp;signifiers,&nbsp;as&nbsp;'.hdr'&nbsp;file&nbsp;as&nbsp;<br>
+written&nbsp;by&nbsp;metaData.&nbsp;This&nbsp;will&nbsp;be&nbsp;the&nbsp;full&nbsp;path&nbsp;name&nbsp;to&nbsp;the&nbsp;copy&nbsp;of&nbsp;the&nbsp;<br>
+header&nbsp;placed&nbsp;in&nbsp;MDDBEnv.HDRS<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;header&nbsp;file&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;&nbsp;&nbsp;list&nbsp;of&nbsp;read&nbsp;lines&nbsp;from&nbsp;CASA&nbsp;Image&nbsp;header&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-configureOverride"><strong>configureOverride</strong></a>(self, hdr, uri, public)</dt><dd><tt>Bundles&nbsp;calls&nbsp;to&nbsp;private&nbsp;methods&nbsp;to&nbsp;validate,&nbsp;check&nbsp;coordinate&nbsp;<br>
+reference&nbsp;system,&nbsp;insert&nbsp;CD&nbsp;matrix,&nbsp;insert&nbsp;DB&nbsp;keys,&nbsp;and&nbsp;various&nbsp;other<br>
+dreadfully&nbsp;tedious&nbsp;chores.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;&nbsp;header&nbsp;file&nbsp;name,&nbsp;uri<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;,&nbsp;&nbsp;&nbsp;list&nbsp;of&nbsp;configured&nbsp;db&nbsp;override&nbsp;lines</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-executeInsert"><strong>executeInsert</strong></a>(self, collid, oride, uri)</dt><dd><tt>Run&nbsp;fits2caom.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;&nbsp;collection&nbsp;id,&nbsp;override&nbsp;file,&nbsp;uri<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><a name="DbCImageInsert-__init__"><strong>__init__</strong></a>(self, configFile, verbose)</dt><dd><tt>Constructor&nbsp;for&nbsp;the&nbsp;base&nbsp;insert&nbsp;class.&nbsp;Builds&nbsp;the&nbsp;environment.<br>
+The&nbsp;datasetType&nbsp;is&nbsp;determined&nbsp;by&nbsp;an&nbsp;upper&nbsp;layer,&nbsp;and&nbsp;the&nbsp;appropriate<br>
+subclass&nbsp;is&nbsp;called.&nbsp;&nbsp;This&nbsp;class&nbsp;should&nbsp;be&nbsp;not&nbsp;be&nbsp;called&nbsp;directly.<br>
+It&nbsp;provides&nbsp;no&nbsp;data&nbsp;engineering&nbsp;of&nbsp;header&nbsp;data&nbsp;into&nbsp;CAOM&nbsp;compatible.<br>
+That&nbsp;is&nbsp;up&nbsp;to&nbsp;the&nbsp;apprpriate&nbsp;subclass&nbsp;and&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;datasetType,<br>
+i.e.&nbsp;FITS,&nbsp;CASA&nbsp;Image,&nbsp;UVFITS,&nbsp;UV&nbsp;MS.&nbsp;Each&nbsp;of&nbsp;these&nbsp;types&nbsp;will&nbsp;be<br>
+provided&nbsp;a&nbsp;specific&nbsp;subclass&nbsp;in&nbsp;this&nbsp;package.</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-buildOverride"><strong>buildOverride</strong></a>(self, header, uri, public)</dt><dd><tt>This&nbsp;method&nbsp;receives&nbsp;a&nbsp;filename&nbsp;as&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;textual&nbsp;header&nbsp;file,<br>
+and&nbsp;a&nbsp;URI&nbsp;to&nbsp;the&nbsp;described&nbsp;data&nbsp;resource.&nbsp;The&nbsp;file&nbsp;must&nbsp;be&nbsp;either&nbsp;a<br>
+pure&nbsp;header&nbsp;or&nbsp;a&nbsp;header&nbsp;as&nbsp;produced&nbsp;by&nbsp;the&nbsp;metaData&nbsp;package.<br>
+The&nbsp;file&nbsp;can&nbsp;have&nbsp;an&nbsp;arbitrary&nbsp;location,&nbsp;but&nbsp;the&nbsp;<a href="#DbCImageInsert-buildOverride">buildOverride</a>()&nbsp;method<br>
+will&nbsp;put&nbsp;a&nbsp;copy&nbsp;in&nbsp;the&nbsp;MDDBEnv.HEADERS&nbsp;directory&nbsp;as&nbsp;a&nbsp;matter&nbsp;of&nbsp;record.<br>
+Method&nbsp;will&nbsp;build&nbsp;a&nbsp;full&nbsp;override&nbsp;file&nbsp;ready&nbsp;for&nbsp;MDDB&nbsp;insertion.&nbsp;If<br>
+no&nbsp;path&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;header,&nbsp;and&nbsp;the&nbsp;file&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;'.',<br>
+the&nbsp;MDDBEnv.DATASETS&nbsp;directory&nbsp;is&nbsp;applied.&nbsp;The&nbsp;public&nbsp;parameter&nbsp;is&nbsp;a&nbsp;<br>
+boolean&nbsp;indicating&nbsp;public&nbsp;access&nbsp;or&nbsp;not.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;bool&gt;&nbsp;header&nbsp;name,&nbsp;uri,&nbsp;public<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;,&nbsp;string&nbsp;indicating&nbsp;file&nbsp;written</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-confirmOverride"><strong>confirmOverride</strong></a>(self, ofile, ftype)</dt><dd><tt>This&nbsp;method&nbsp;confirms&nbsp;the&nbsp;presence&nbsp;of&nbsp;keyword&nbsp;subsets&nbsp;for&nbsp;each&nbsp;data&nbsp;type,&nbsp;<br>
+FITS,&nbsp;CASA&nbsp;Image,&nbsp;UVFits,&nbsp;and&nbsp;UV&nbsp;MS.&nbsp;The&nbsp;method&nbsp;should&nbsp;return&nbsp;True&nbsp;on&nbsp;successful<br>
+testing,&nbsp;or&nbsp;the&nbsp;filename&nbsp;of&nbsp;a&nbsp;validation&nbsp;error/warning&nbsp;file.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;&lt;string&gt;,&nbsp;override&nbsp;fileaname,&nbsp;filetype,&nbsp;collid<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-printOverride"><strong>printOverride</strong></a>(self, lines)</dt><dd><tt>Print&nbsp;the&nbsp;override&nbsp;lines&nbsp;to&nbsp;stdout.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;void&gt;</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-writeOverride"><strong>writeOverride</strong></a>(self, overrideLines, overrideName)</dt><dd><tt>Write&nbsp;the&nbsp;override&nbsp;file&nbsp;actual&nbsp;into&nbsp;$DQS/OVERRIDE.<br>
+&nbsp;<br>
+parameters:&nbsp;&lt;list&gt;,&nbsp;&lt;string&gt;&nbsp;list&nbsp;of&nbsp;override&nbsp;header&nbsp;lines,&nbsp;override&nbsp;name<br>
+return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;&nbsp;overrride&nbsp;file&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="DbCImageInsert-writeValidation"><strong>writeValidation</strong></a>(self, ofile)</dt><dd><tt>Write&nbsp;a&nbsp;validation&nbsp;file&nbsp;from&nbsp;the&nbsp;self.<strong>validationMsg</strong>&nbsp;object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="baseDbInsert.html#BaseDbInsert">baseDbInsert.BaseDbInsert</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cos"><strong>cos</strong></a>(...)</dt><dd><tt><a href="#-cos">cos</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;cosine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-radians"><strong>radians</strong></a>(...)</dt><dd><tt><a href="#-radians">radians</a>(x)<br>
+&nbsp;<br>
+Convert&nbsp;angle&nbsp;x&nbsp;from&nbsp;degrees&nbsp;to&nbsp;radians.</tt></dd></dl>
+ <dl><dt><a name="-sin"><strong>sin</strong></a>(...)</dt><dd><tt><a href="#-sin">sin</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;sine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#00477d">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#00477d"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>
